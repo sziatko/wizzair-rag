@@ -105,6 +105,20 @@ Judging all 3 runs cost about $7.40 (1.28M input and 117k output tokens on Opus 
 Given that agreement, later runs use Claude Sonnet 5.5 as the judge (about $3.70 for the
 same volume) and Opus 5.5 re-grades a sample of 30 (about $0.30).
 
+**Answer accuracy after the prompt fixes** (decision 8; 1 run, judge Claude Sonnet 5.5, so not exactly
+comparable with the Opus-judged baseline above; Opus agreed with Sonnet on 26 of 30 sampled verdicts):
+
+| Kind | Questions | Baseline | After fixes | Refused | Pipeline errors |
+|---|---|---|---|---|---|
+| fact | 159 | 84% | 90% | 3% | 1 |
+| faq | 19 | 93% | 95% | 11% | 0 |
+| tricky | 21 | 76% | 71% | 19% | 0 |
+| no-answer | 11 | 45% | 91% | 91% | 0 |
+| all | 210 | 82% | 89% | 10% | 1 |
+
+Refusals and invented conflicts improved. Two partial-answer `tricky` groups got worse,
+and one sub-clause citation still slips through. Raw results: `evals/results/2026-11-11T1916.json`.
+
 ### What the numbers say
 
 - **Retrieval is mostly fine; the misses have a pattern.** When a fact is in both a GCC
@@ -113,20 +127,21 @@ same volume) and Opus 5.5 re-grades a sample of 30 (about $0.30).
   a chunk with the fact, but not always the most complete one. Tricky questions suffer
   most: a false premise ("my cat's carrier", "a 10 kg bag on the basic fare") pulls
   retrieval towards the premise, not the rule that corrects it.
-- **Refusals are the weak spot.** On no-answer questions Haiku often replies with
-  `kind: "answer"` and text like "the excerpts don't say how late you can add a bag".
-  The wording is right, but the structured refusal flag is not set, so the passenger
-  does not get the standard Help Centre message. This is the A4 finding, now measured:
-  the prompt's rule for partial answers competes with the rule to refuse.
-- **Haiku sometimes invents a conflict.** The prompt's conflict rule ("if sources differ,
-  give both") makes it call two unrelated clauses a disagreement (for example a reporting
-  deadline vs the "bag is lost after 21 days" rule). It also hedges with "probably not"
-  where an exclusion clause gives a clear no.
+- **Refusals were the weak spot (baseline); the prompt fix mostly closed it.** At baseline
+  Haiku often replied with `kind: "answer"` and text like "the excerpts don't say how late
+  you can add a bag", so the passenger did not get the standard Help Centre message. After
+  the prompt change (decision 8) no-answer accuracy went from 45% to 91%, but two
+  partial-answer `tricky` groups got worse: the refusal rule is now slightly too strong.
+- **Haiku invented conflicts (baseline).** The conflict rule made it call two unrelated
+  clauses a disagreement (a reporting deadline vs the "bag is lost after 21 days" rule). It
+  also hedges with "probably not" where an exclusion clause gives a clear no. The prompt
+  now defines a conflict as two values for the same thing; real conflict groups stayed correct.
 - **Answers that miss a second fact.** Many wrong replies are right but incomplete: they
   give the size but not the price, or the deadline but not the liability limit, often
   because the second chunk was not retrieved.
-- **3 pipeline errors in 630 replies:** Haiku cited a sub-clause id (`15.1.6.3`) that is
-  part of a retrieved chunk but is not a chunk id. The run records it as a wrong answer.
+- **Sub-clause citations (3 errors in 630 replies at baseline, 1 in 210 after the fix):** Haiku
+  cites an id like `15.1.6.3` that is inside a retrieved chunk but is not a chunk id. The run
+  records it as a wrong answer. The prompt reduces it; a per-call enum in the schema would remove it.
 - **Synthetic vs real wording:** FAQ questions score as well as or better than the
   model-written fact questions, so there is no sign that one model's wording inflates
   the metrics.

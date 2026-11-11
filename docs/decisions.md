@@ -126,3 +126,26 @@ this file keeps the reasoning. Newest last.
   later runs use Sonnet 5.5 as the judge (half the price) and Opus 5.5 re-grades a
   sample of 30. The baseline in `evals/results/2026-11-11T1824.json` stays judged by
   Opus. Cost: a weaker judge on the full set, with a sample of 30 to show if it drifts.
+
+## 8. Prompt fixes for refusals, invented conflicts and sub-clause citations (2026-11-11)
+
+- **Choice:** three edits to the answer prompt, no code or schema change. (1) Refuse when
+  the excerpts do not answer the core of the question, and an "answer" that only says the
+  excerpts do not cover it counts as a refusal; a partial answer stays for the case where
+  the excerpts really state part of it. (2) A conflict means two excerpts giving different
+  values or rules for the *same* thing; two rules about different things are not one.
+  (3) Cite the id exactly as in the excerpt's `id` attribute, never a clause number from
+  the text. The check that citations are among the retrieved chunks is unchanged.
+- **Result (1 run, judge Sonnet 5.5, vs the 3-run Opus baseline):** answer accuracy
+  82% -> 89%; no-answer 45% -> 91%; fact 84% -> 90%; tricky 76% -> 71%; pipeline errors
+  3 of 630 -> 1 of 210. Opus re-graded 30 verdicts and agreed on 26 (87%); all 4
+  disagreements were Sonnet saying "correct" and Opus "incorrect", so Sonnet is the more
+  lenient judge and part of the gain may be the judge, not the prompt.
+- **Not fixed:** one reply still cited a sub-clause id (`#18.2.7.2`), so the prompt rule
+  reduces but does not remove it. A per-call enum of retrieved ids in the schema would.
+- **Got worse:** two `tricky` groups where the sources answer only part of the question
+  (`tricky-basic-fare-10kg`, `tricky-infant-turns-two`): the reply now gives only
+  "the excerpts don't say" or misses the known part. Single run, so noisy; the refusal
+  rule is probably a bit too strong there.
+- **Cost:** one run is noisy at group level (3 questions per group), so group changes of
+  one question are not evidence. Re-run with 3 runs before relying on them.
