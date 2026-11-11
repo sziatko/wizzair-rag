@@ -1,0 +1,850 @@
+[
+ {
+  "id": "cabin-free-bag-size",
+  "chunks": [
+   "hc-cabin-baggage#accordion-free-carry-on-bag",
+   "gcc-wah-2023-03-01#15.3.1",
+   "fees-fares-bundles#accordion-basic-fare",
+   "fees-fares-bundles#accordion-wizz-plus-wizz-family-plus",
+   "hc-childrens-baggage#accordion-luggage-for-children-2-14-years"
+  ],
+  "best": "hc-cabin-baggage#accordion-free-carry-on-bag",
+  "answer": "The free carry-on bag (e.g. a small backpack) can be at most 40 x 30 x 20 cm and 10 kg, and must fit under the seat in front.",
+  "note": "Only the Help Centre carry-on page gives the 10 kg weight; the other chunks state the size only."
+ },
+ {
+  "id": "cabin-trolley-size",
+  "chunks": [
+   "hc-cabin-baggage#accordion-trolley-bag-additional-cabin-luggage",
+   "gcc-wah-2023-03-01#15.3.2",
+   "fees-fares-bundles#accordion-wizz-plus-wizz-family-plus",
+   "fees-fares-bundles#accordion-wizz-smart",
+   "hc-childrens-baggage#accordion-luggage-for-children-2-14-years"
+  ],
+  "best": "hc-cabin-baggage#accordion-trolley-bag-additional-cabin-luggage",
+  "answer": "A trolley bag can be at most 55 x 40 x 23 cm (wheels may add up to 5 cm) and 10 kg, so a 55 x 40 x 23 cm suitcase fits the rule.",
+  "note": null
+ },
+ {
+  "id": "cabin-trolley-via-priority",
+  "chunks": [
+   "hc-cabin-baggage#accordion-trolley-bag-additional-cabin-luggage",
+   "hc-cabin-baggage#intro"
+  ],
+  "best": "hc-cabin-baggage#accordion-trolley-bag-additional-cabin-luggage",
+  "answer": "A trolley bag is only available as part of WIZZ Priority, bought during booking; it lets you take two bags on board (the free carry-on plus the trolley). It cannot be bought on its own.",
+  "note": "Bundles that include WIZZ Priority (WIZZ Smart, WIZZ Plus) also give a trolley bag."
+ },
+ {
+  "id": "cabin-free-items",
+  "chunks": [
+   "hc-cabin-baggage#intro",
+   "gcc-wah-2023-03-01#15.3.5"
+  ],
+  "best": "hc-cabin-baggage#intro",
+  "answer": "Besides your bag you may take for free: a coat or blanket, a mobile phone, reading material, duty-free items bought airside after security, infant food and a foldable stroller/crib for infants, and a pair of crutches for disabled passengers. So a jacket and duty-free perfume do not have to fit in your carry-on.",
+  "note": null
+ },
+ {
+  "id": "cabin-neck-pillow",
+  "chunks": [
+   "hc-cabin-baggage#intro"
+  ],
+  "best": "hc-cabin-baggage#intro",
+  "answer": "No. A neck pillow is not a separate free item; it must be packed inside your cabin bag, otherwise it may be charged as an extra/oversized item.",
+  "note": null
+ },
+ {
+  "id": "cabin-liquids",
+  "chunks": [
+   "hc-cabin-baggage#intro"
+  ],
+  "best": "hc-cabin-baggage#intro",
+  "answer": "Liquids must be in containers of max 100 ml, all fitting in one transparent resealable 1-litre bag (20 x 20 cm) shown separately at security; a 200 ml bottle is not allowed and will be disposed of.",
+  "note": null
+ },
+ {
+  "id": "cabin-oversize-at-gate",
+  "chunks": [
+   "gcc-wah-2023-03-01#15.3.3",
+   "hc-cabin-baggage#accordion-free-carry-on-bag",
+   "hc-cabin-baggage#accordion-trolley-bag-additional-cabin-luggage"
+  ],
+  "best": "gcc-wah-2023-03-01#15.3.3",
+  "answer": "An oversized or overweight cabin bag is carried only after paying an oversize/overweight fee at the boarding gate, and Wizz Air may carry it as checked baggage.",
+  "note": null
+ },
+ {
+  "id": "cabin-moved-to-hold",
+  "chunks": [
+   "gcc-wah-2023-03-01#15.3.4"
+  ],
+  "best": "gcc-wah-2023-03-01#15.3.4",
+  "answer": "Yes. For operational or safety reasons Wizz Air may carry a compliant cabin bag in the cargo compartment, free of charge (this does not apply to personal items).",
+  "note": null
+ },
+ {
+  "id": "cabin-gate-fee",
+  "chunks": [
+   "fees-all-services#baggage-fees"
+  ],
+  "best": "fees-all-services#baggage-fees",
+  "answer": "The cabin baggage fee at the airport is EUR 55-65 per flight, per passenger, per bag.",
+  "note": null
+ },
+ {
+  "id": "checked-weights-dimensions",
+  "chunks": [
+   "hc-checked-in-baggage#intro",
+   "gcc-wah-2023-03-01#15.1.1"
+  ],
+  "best": "hc-checked-in-baggage#intro",
+  "answer": "Checked bags come in 10, 20, 26 and 32 kg options (so 26 kg is available), with maximum dimensions of 149 x 119 x 171 cm.",
+  "note": null
+ },
+ {
+  "id": "checked-10kg-one-only",
+  "chunks": [
+   "hc-checked-in-baggage#intro"
+  ],
+  "best": "hc-checked-in-baggage#intro",
+  "answer": "Each passenger may buy at most one 10 kg checked bag, so two 10 kg bags for one person are not possible.",
+  "note": null
+ },
+ {
+  "id": "checked-basic-fare-none",
+  "chunks": [
+   "hc-checked-in-baggage#intro"
+  ],
+  "best": "hc-checked-in-baggage#intro",
+  "answer": "No. The basic fare includes no checked-in baggage; you must buy a checked bag (WIZZ Go and WIZZ Plus bundles include one).",
+  "note": null
+ },
+ {
+  "id": "checked-pay-online-three",
+  "chunks": [
+   "hc-checked-in-baggage#accordion-excess-baggage"
+  ],
+  "best": "hc-checked-in-baggage#accordion-excess-baggage",
+  "answer": "You can pay for the first three checked bags online; any more (up to six per flight) are paid at the airport.",
+  "note": null
+ },
+ {
+  "id": "checked-excess-per-kg",
+  "chunks": [
+   "hc-checked-in-baggage#accordion-excess-baggage",
+   "fees-all-services#baggage-fees"
+  ],
+  "best": "hc-checked-in-baggage#accordion-excess-baggage",
+  "answer": "Overweight checked bags are charged at the airport per extra kilo: 13 EUR/kg per the Help Centre (the fees page lists EUR 13-15 per kg, per item, per flight); 3 extra kg is about EUR 39 (up to 45).",
+  "note": "The Help Centre page says 13 EUR/kg while the fees page gives a range of EUR 13-15/kg."
+ },
+ {
+  "id": "checked-do-not-pack-valuables",
+  "chunks": [
+   "hc-checked-in-baggage#accordion-restricted-items",
+   "gcc-wah-2023-03-01#15.1.6"
+  ],
+  "best": "hc-checked-in-baggage#accordion-restricted-items",
+  "answer": "Do not pack cash, securities, jewellery, precious metals/stones, electronics (laptops, cameras, phones), documents, ID, keys, liquids, medicine, art or perishables in checked bags; Wizz Air is not liable for their loss, damage or delay.",
+  "note": null
+ },
+ {
+  "id": "checked-high-value-declaration",
+  "chunks": [
+   "hc-checked-in-baggage#accordion-special-declaration-for-value",
+   "gcc-wah-2023-03-01#17.2.6",
+   "gcc-wah-2023-03-01#17.2.7",
+   "gcc-wah-2023-03-01#annex-7"
+  ],
+  "best": "hc-checked-in-baggage#accordion-special-declaration-for-value",
+  "answer": "Fill in the High Value Declaration form, hand it to the check-in desk agent and pay the fee at the airport (not at self bag-drop); liability then rises to the declared value, max 2500 EUR per checked bag.",
+  "note": "Help Centre says max 2500 EUR (~2010 SDR) while the GCC says 2224 SDR; the Help Centre takes precedence."
+ },
+ {
+  "id": "checked-uncollected-90-days",
+  "chunks": [
+   "gcc-wah-2023-03-01#15.9.3"
+  ],
+  "best": "gcc-wah-2023-03-01#15.9.3",
+  "answer": "Uncollected baggage is stored for 90 days for a storage fee; after that Wizz Air may dispose of it.",
+  "note": null
+ },
+ {
+  "id": "fee-checked-online",
+  "chunks": [
+   "fees-all-services#baggage-fees"
+  ],
+  "best": "fees-all-services#baggage-fees",
+  "answer": "A 20 kg checked bag booked online or via the call centre costs EUR 10.00-112.50 in low season and EUR 12.00-122.00 in high season.",
+  "note": null
+ },
+ {
+  "id": "fee-checked-airport",
+  "chunks": [
+   "fees-all-services#baggage-fees"
+  ],
+  "best": "fees-all-services#baggage-fees",
+  "answer": "A 20 kg checked bag bought at the airport costs EUR 70-80 per flight, per passenger, per bag.",
+  "note": null
+ },
+ {
+  "id": "fee-high-season-dates",
+  "chunks": [
+   "fees-all-services#baggage-fees"
+  ],
+  "best": "fees-all-services#baggage-fees",
+  "answer": "High season: 21 March-20 April 2026 (Easter), 12 June-30 September 2026 (summer) and 15 December 2026-10 January 2027 (Christmas); so 20 December 2026 is high season.",
+  "note": null
+ },
+ {
+  "id": "fee-priority",
+  "chunks": [
+   "fees-all-services#wizz-priority"
+  ],
+  "best": "fees-all-services#wizz-priority",
+  "answer": "WIZZ Priority costs EUR 13-60 per flight per passenger online or via the call centre, and EUR 65-75 at the airport.",
+  "note": null
+ },
+ {
+  "id": "fee-sports-equipment",
+  "chunks": [
+   "fees-all-services#baggage-fees"
+  ],
+  "best": "fees-all-services#baggage-fees",
+  "answer": "Sports equipment costs EUR 55-65 online or via the call centre and EUR 70 at the airport, per flight, per passenger, per item.",
+  "note": null
+ },
+ {
+  "id": "bundle-wizz-go",
+  "chunks": [
+   "fees-fares-bundles#accordion-wizz-go-wizz-family-go",
+   "hc-checked-in-baggage#intro"
+  ],
+  "best": "fees-fares-bundles#accordion-wizz-go-wizz-family-go",
+  "answer": "WIZZ Go includes a 20 kg checked bag (149 x 119 x 171 cm) plus a 40 x 30 x 20 cm carry-on under the seat, so no separate suitcase purchase is needed.",
+  "note": "The sources don't define which bundle is the 'middle' one; answered for WIZZ Go."
+ },
+ {
+  "id": "bundle-wizz-plus",
+  "chunks": [
+   "fees-fares-bundles#accordion-wizz-plus-wizz-family-plus",
+   "hc-checked-in-baggage#intro"
+  ],
+  "best": "fees-fares-bundles#accordion-wizz-plus-wizz-family-plus",
+  "answer": "WIZZ Plus includes WIZZ Priority with a 55 x 40 x 23 cm, 10 kg trolley bag, a free 40 x 30 x 20 cm carry-on and a 32 kg checked bag.",
+  "note": "Sources don't call WIZZ Plus the most expensive bundle explicitly; assumed from the question."
+ },
+ {
+  "id": "bundle-wizz-smart",
+  "chunks": [
+   "fees-fares-bundles#accordion-wizz-smart"
+  ],
+  "best": "fees-fares-bundles#accordion-wizz-smart",
+  "answer": "WIZZ Smart includes a carry-on bag, WIZZ Priority with a 55 x 40 x 23 cm trolley bag guaranteed in the cabin, priority boarding and check-in, seat selection and online check-in up to 30 days ahead.",
+  "note": null
+ },
+ {
+  "id": "infant-extra-item",
+  "chunks": [
+   "hc-childrens-baggage#accordion-luggage-for-infant-0-2-years",
+   "hc-cabin-baggage#intro"
+  ],
+  "best": "hc-childrens-baggage#accordion-luggage-for-infant-0-2-years",
+  "answer": "With an infant (0-2) you can bring free one additional personal item (40 x 30 x 20 cm, max 10 kg) as the infant's luggage, food for the flight, and a foldable pushchair, pram, travel cot or car seat (stowed in the hold at the aircraft door).",
+  "note": null
+ },
+ {
+  "id": "infant-car-seat-extra-seat",
+  "chunks": [
+   "hc-childrens-baggage#accordion-luggage-for-infant-0-2-years",
+   "gcc-wah-2023-03-01#15.3.5"
+  ],
+  "best": "hc-childrens-baggage#accordion-luggage-for-infant-0-2-years",
+  "answer": "Yes, by buying an extra seat at the normal fare for the car seat; then no infant fee is due (but no extra infant baggage allowance applies).",
+  "note": null
+ },
+ {
+  "id": "child-pushchair-free",
+  "chunks": [
+   "hc-childrens-baggage#accordion-luggage-for-children-2-14-years",
+   "hc-checked-in-baggage#intro",
+   "gcc-wah-2023-03-01#15.1.3"
+  ],
+  "best": "hc-childrens-baggage#accordion-luggage-for-children-2-14-years",
+  "answer": "A foldable pushchair, pram, travel cot or car seat for a child over 2 is checked in free of charge and can be used up to the aircraft door or steps, where it is tagged and put in the hold.",
+  "note": null
+ },
+ {
+  "id": "child-booster-seat",
+  "chunks": [
+   "hc-childrens-baggage#accordion-luggage-for-children-2-14-years"
+  ],
+  "best": "hc-childrens-baggage#accordion-luggage-for-children-2-14-years",
+  "answer": "No. A booster seat cannot be taken on board and is treated as additional luggage subject to charges.",
+  "note": null
+ },
+ {
+  "id": "child-stroller-instead-of-trolley",
+  "chunks": [
+   "hc-childrens-baggage#accordion-luggage-for-children-2-14-years"
+  ],
+  "best": "hc-childrens-baggage#accordion-luggage-for-children-2-14-years",
+  "answer": "Only if it is a compact foldable stroller within 55 x 40 x 23 cm and you have a trolley bag allowance (WIZZ Priority); it then replaces your trolley and must fit the sizer and overhead bin.",
+  "note": null
+ },
+ {
+  "id": "instrument-in-cabin",
+  "chunks": [
+   "hc-special-baggage#accordion-musical-instruments"
+  ],
+  "best": "hc-special-baggage#accordion-musical-instruments",
+  "answer": "You need WIZZ Priority; then a musical instrument in a case up to 80 x 40 x 23 cm and 10 kg can replace the trolley bag and goes in the overhead compartment, as your only cabin bag.",
+  "note": null
+ },
+ {
+  "id": "instrument-extra-seat",
+  "chunks": [
+   "hc-special-baggage#accordion-musical-instruments"
+  ],
+  "best": "hc-special-baggage#accordion-musical-instruments",
+  "answer": "Book an extra seat for the instrument by entering \"EXST\" as first name and the passenger's surname as last name; it must be a window seat, not in exit rows or the first row.",
+  "note": "Instruments larger than a cello must be checked in with a Limited Release tag."
+ },
+ {
+  "id": "sports-equipment-limits",
+  "chunks": [
+   "hc-special-baggage#accordion-sports-equipment"
+  ],
+  "best": "hc-special-baggage#accordion-sports-equipment",
+  "answer": "One set of sports equipment, max 149 x 119 x 171 cm and 32 kg, for a fee; it can be added at booking or later in your WIZZ Profile up to 3 hours before departure, subject to availability.",
+  "note": "GCC 15.5.1 says special items must be reported at booking via the call centre; the Help Centre (up to 3 h before departure) takes precedence."
+ },
+ {
+  "id": "sports-bicycle-packing",
+  "chunks": [
+   "hc-special-baggage#accordion-sports-equipment"
+  ],
+  "best": "hc-special-baggage#accordion-sports-equipment",
+  "answer": "Pack the bike in a bicycle travel case with wheels and pedals removed and handlebars turned parallel, or in cardboard with tyres deflated; Wizz Air does not provide packaging.",
+  "note": null
+ },
+ {
+  "id": "pets-not-allowed",
+  "chunks": [
+   "hc-special-baggage#accordion-animals",
+   "gcc-wah-2023-03-01#15.6.1",
+   "gcc-wah-2023-03-01#15.4.1"
+  ],
+  "best": "hc-special-baggage#accordion-animals",
+  "answer": "No. Pets are not allowed on board, only guide/assistance dogs; Emotional Support Animals are not accepted.",
+  "note": null
+ },
+ {
+  "id": "ashes",
+  "chunks": [
+   "hc-special-baggage#accordion-ashes"
+  ],
+  "best": "hc-special-baggage#accordion-ashes",
+  "answer": "Yes, as cabin baggage only, safely packed in a suitable container; you must show the death certificate and the cremation certificate at the airport.",
+  "note": null
+ },
+ {
+  "id": "power-bank",
+  "chunks": [
+   "hc-restricted-items#accordion-lithium-batteries"
+  ],
+  "best": "hc-restricted-items#accordion-lithium-batteries",
+  "answer": "Yes, but only in cabin baggage/on your person (never in checked bags), max one power bank up to 100 Wh, and it may not be used or charged during the flight.",
+  "note": null
+ },
+ {
+  "id": "spare-batteries-100-160",
+  "chunks": [
+   "hc-restricted-items#accordion-lithium-batteries"
+  ],
+  "best": "hc-restricted-items#accordion-lithium-batteries",
+  "answer": "Lithium-ion batteries of 100-160 Wh may be carried in cabin baggage only, with Wizz Air's approval, max two individually protected spares per person.",
+  "note": null
+ },
+ {
+  "id": "e-cigarettes",
+  "chunks": [
+   "hc-restricted-items#accordion-electronic-devices-on-board",
+   "hc-restricted-items#accordion-lithium-batteries"
+  ],
+  "best": "hc-restricted-items#accordion-electronic-devices-on-board",
+  "answer": "E-cigarettes are allowed for personal use in carry-on baggage only, not in checked baggage; recharging and using them on board is prohibited.",
+  "note": null
+ },
+ {
+  "id": "drones",
+  "chunks": [
+   "hc-restricted-items#accordion-electronic-devices-on-board"
+  ],
+  "best": "hc-restricted-items#accordion-electronic-devices-on-board",
+  "answer": "Yes, drones are allowed in carry-on and checked baggage; in checked baggage it must be switched off and well protected, and batteries must meet the portable electronics rules.",
+  "note": null
+ },
+ {
+  "id": "electric-vehicles",
+  "chunks": [
+   "hc-restricted-items#accordion-electronic-devices-on-board"
+  ],
+  "best": "hc-restricted-items#accordion-electronic-devices-on-board",
+  "answer": "No. Battery-powered small vehicles such as e-scooters, e-bikes and hoverboards are not permitted in carry-on or checked baggage, regardless of battery size.",
+  "note": "Sources don't address carrying such a vehicle with the battery removed."
+ },
+ {
+  "id": "knives",
+  "chunks": [
+   "hc-restricted-items#accordion-items-restricted-from-carriage",
+   "hc-cabin-baggage#intro",
+   "gcc-wah-2023-03-01#15.4.2"
+  ],
+  "best": "hc-restricted-items#accordion-items-restricted-from-carriage",
+  "answer": "The security prohibited list bans knives and scissors with blades over 6 cm in the cabin; but Wizz Air's cabin rules say unchecked baggage must not contain knives, scissors or blades at all.",
+  "note": "Help Centre pages differ: the restricted-items list uses a 6 cm limit, the cabin baggage page (and GCC 15.4.2) bans knives and scissors outright."
+ },
+ {
+  "id": "fragile-items",
+  "chunks": [
+   "gcc-wah-2023-03-01#15.5.4"
+  ],
+  "best": "gcc-wah-2023-03-01#15.5.4",
+  "answer": "The passenger: carriage of fragile items is entirely at your risk and Wizz Air has no liability for their damage; such baggage is checked only with a Limited Release Tag.",
+  "note": null
+ },
+ {
+  "id": "lost-report-pir",
+  "chunks": [
+   "hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage",
+   "gcc-wah-2023-03-01#18.2.3",
+   "gcc-wah-2023-03-01#18.2.2"
+  ],
+  "best": "hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage",
+  "answer": "Go to the Baggage Claim / Lost & Found desk in the transit area and file a Property Irregularity Report (PIR); alternatively create the report yourself online via WorldTracer Self Service.",
+  "note": "GCC 18.2.3 requires an immediate report before leaving the transit area; the Help Centre also allows the online WorldTracer report and takes precedence."
+ },
+ {
+  "id": "lost-21-days",
+  "chunks": [
+   "hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage",
+   "gcc-wah-2023-03-01#18.2.5"
+  ],
+  "best": "hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage",
+  "answer": "If the bag is not found within 21 days, Wizz Air is liable for loss; submit a 'Bag loss' claim with a copy of the PIR, baggage tag, boarding pass and bank details.",
+  "note": null
+ },
+ {
+  "id": "delay-expenses-how",
+  "chunks": [
+   "hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage",
+   "gcc-wah-2023-03-01#18.2.6"
+  ],
+  "best": "hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage",
+  "answer": "Yes, for essential items at reasonable cost: submit a claim form on the Wizz Air website under 'Bag delay' with all receipts, a copy of the PIR, baggage tag and boarding pass.",
+  "note": null
+ },
+ {
+  "id": "delay-expenses-limits",
+  "chunks": [
+   "gcc-wah-2023-03-01#18.2.6"
+  ],
+  "best": "gcc-wah-2023-03-01#18.2.6",
+  "answer": "If the bag is delayed more than 24 hours on an outbound flight you can spend a reasonable amount on essentials for max three days, claimed online within 21 days; a 10-hour delay doesn't qualify.",
+  "note": null
+ },
+ {
+  "id": "damage-report-steps",
+  "chunks": [
+   "hc-bags-reporting-procedure#accordion-damaged-baggage",
+   "gcc-wah-2023-03-01#18.2.10",
+   "gcc-wah-2023-03-01#18.2.4"
+  ],
+  "best": "hc-bags-reporting-procedure#accordion-damaged-baggage",
+  "answer": "Report at the Baggage Claim desk and file a PIR (brand, model, value, age of bag), then repair the bag and keep the receipt (or get written confirmation if beyond repair) and submit a 'Bag damage' claim online; Wizz Air covers the repair cost.",
+  "note": null
+ },
+ {
+  "id": "damage-noticed-later",
+  "chunks": [
+   "hc-bags-reporting-procedure#accordion-damaged-baggage",
+   "gcc-wah-2023-03-01#18.2.4",
+   "gcc-wah-2023-03-01#18.2.7",
+   "gcc-wah-2023-03-01#annex-8"
+  ],
+  "best": "hc-bags-reporting-procedure#accordion-damaged-baggage",
+  "answer": "Yes, if the damage could not be noticed on arrival you can report it at the airport within 7 days, so 3 days later is not too late.",
+  "note": null
+ },
+ {
+  "id": "damage-minor-scratches",
+  "chunks": [
+   "gcc-wah-2023-03-01#17.2.5",
+   "hc-bags-reporting-procedure#accordion-damaged-baggage"
+  ],
+  "best": "gcc-wah-2023-03-01#17.2.5",
+  "answer": "No. Wizz Air excludes liability for minor exterior damage like scratches, soiling, stains and dents from normal wear and tear; it only accepts damage that prevents functional use.",
+  "note": null
+ },
+ {
+  "id": "liability-limit",
+  "chunks": [
+   "gcc-wah-2023-03-01#annex-6",
+   "gcc-wah-2023-03-01#17.2.6",
+   "gcc-wah-2023-03-01#annex-7"
+  ],
+  "best": "gcc-wah-2023-03-01#annex-6",
+  "answer": "Liability for lost, destroyed or damaged baggage is limited to 1,288 SDR (about EUR 1,600) unless a special declaration of value was made, so a EUR 3,000 loss is capped at about EUR 1,600.",
+  "note": "GCC 17.2.6 says the limit is per passenger, while Annex 7 says per piece of baggage."
+ },
+ {
+  "id": "delay-claim-deadline",
+  "chunks": [
+   "gcc-wah-2023-03-01#18.2.7",
+   "gcc-wah-2023-03-01#annex-8"
+  ],
+  "best": "gcc-wah-2023-03-01#18.2.7",
+  "answer": "A written claim for delay must be made within 21 days from when the bag was made available to you; a month later is too late.",
+  "note": null
+ },
+ {
+  "id": "left-item-onboard",
+  "chunks": [
+   "gcc-wah-2023-03-01#17.2.9"
+  ],
+  "best": "gcc-wah-2023-03-01#17.2.9",
+  "answer": "Contact the lost and found department at the airport; you are responsible for not leaving items on board.",
+  "note": null
+ },
+ {
+  "id": "cabin-bag-damage-liability",
+  "chunks": [
+   "gcc-wah-2023-03-01#17.2.1",
+   "gcc-wah-2023-03-01#annex-6"
+  ],
+  "best": "gcc-wah-2023-03-01#17.2.1",
+  "answer": "Wizz Air is not liable for damage to cabin (unchecked) baggage unless the damage resulted from its fault.",
+  "note": "GCC 18.2.9 also requires reporting cabin-bag damage on board."
+ },
+ {
+  "id": "faq-infant-allowance",
+  "chunks": [
+   "hc-childrens-baggage#accordion-luggage-for-infant-0-2-years"
+  ],
+  "best": "hc-childrens-baggage#accordion-luggage-for-infant-0-2-years",
+  "answer": "Infants have no baggage allowance of their own (no trolley or checked bag in their name), but one additional personal item (40 x 30 x 20 cm, 10 kg), food and a pushchair/car seat can be taken free.",
+  "note": null
+ },
+ {
+  "id": "faq-liquids",
+  "chunks": [
+   "hc-cabin-baggage#intro"
+  ],
+  "best": "hc-cabin-baggage#intro",
+  "answer": "Yes, in containers of max 100 ml that fit in one transparent resealable 1-litre (20 x 20 cm) bag, presented separately at security.",
+  "note": null
+ },
+ {
+  "id": "faq-pet",
+  "chunks": [
+   "hc-special-baggage#accordion-animals",
+   "gcc-wah-2023-03-01#15.6.1",
+   "gcc-wah-2023-03-01#15.4.1"
+  ],
+  "best": "hc-special-baggage#accordion-animals",
+  "answer": "No. Pets are not allowed on board, except guide/assistance dogs.",
+  "note": null
+ },
+ {
+  "id": "faq-damaged",
+  "chunks": [
+   "hc-bags-reporting-procedure#accordion-damaged-baggage",
+   "gcc-wah-2023-03-01#18.2.4",
+   "gcc-wah-2023-03-01#18.2.10",
+   "gcc-wah-2023-03-01#18.2.2"
+  ],
+  "best": "hc-bags-reporting-procedure#accordion-damaged-baggage",
+  "answer": "Report it at the airport's Baggage Claim desk and file a PIR, repair the bag and keep the receipt, then submit a 'Bag damage' claim on the Wizz Air website with the PIR and receipt.",
+  "note": null
+ },
+ {
+  "id": "faq-lost",
+  "chunks": [
+   "hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage",
+   "gcc-wah-2023-03-01#18.2.3",
+   "gcc-wah-2023-03-01#18.2.2"
+  ],
+  "best": "hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage",
+  "answer": "File a Property Irregularity Report at the airport's Baggage Claim / Lost & Found desk (or via WorldTracer Self Service); if not found within 21 days, submit a 'Bag loss' claim.",
+  "note": null
+ },
+ {
+  "id": "faq-left-on-board",
+  "chunks": [
+   "gcc-wah-2023-03-01#17.2.9"
+  ],
+  "best": "gcc-wah-2023-03-01#17.2.9",
+  "answer": "Contact the lost and found department at the airport.",
+  "note": null
+ },
+ {
+  "id": "faq-checked-included",
+  "chunks": [
+   "hc-checked-in-baggage#intro",
+   "fees-fares-bundles#accordion-wizz-go-wizz-family-go",
+   "fees-fares-bundles#accordion-wizz-plus-wizz-family-plus"
+  ],
+  "best": "hc-checked-in-baggage#intro",
+  "answer": "Not with the basic fare; the WIZZ Go (20 kg) and WIZZ Plus (32 kg) bundles include a checked bag.",
+  "note": null
+ },
+ {
+  "id": "faq-how-many-checked",
+  "chunks": [
+   "hc-checked-in-baggage#intro",
+   "hc-checked-in-baggage#accordion-excess-baggage"
+  ],
+  "best": "hc-checked-in-baggage#intro",
+  "answer": "Up to six pieces of checked baggage per passenger per flight.",
+  "note": null
+ },
+ {
+  "id": "faq-ski",
+  "chunks": [
+   "hc-special-baggage#accordion-sports-equipment",
+   "gcc-wah-2023-03-01#15.5.1"
+  ],
+  "best": "hc-special-baggage#accordion-sports-equipment",
+  "answer": "Yes, ski and snowboard equipment packed in a pouch is accepted as sports equipment for a fee, max 149 x 119 x 171 cm and 32 kg, added at booking or up to 3 hours before departure.",
+  "note": null
+ },
+ {
+  "id": "faq-drone",
+  "chunks": [
+   "hc-restricted-items#accordion-electronic-devices-on-board"
+  ],
+  "best": "hc-restricted-items#accordion-electronic-devices-on-board",
+  "answer": "Yes, in carry-on or checked baggage; if checked, switched off and well protected, with batteries meeting the electronics rules.",
+  "note": null
+ },
+ {
+  "id": "faq-hoverboard",
+  "chunks": [
+   "hc-restricted-items#accordion-electronic-devices-on-board"
+  ],
+  "best": "hc-restricted-items#accordion-electronic-devices-on-board",
+  "answer": "No, hoverboards and other battery-powered small vehicles are not permitted in carry-on or checked baggage.",
+  "note": null
+ },
+ {
+  "id": "faq-e-cigarettes",
+  "chunks": [
+   "hc-restricted-items#accordion-electronic-devices-on-board",
+   "hc-restricted-items#accordion-lithium-batteries"
+  ],
+  "best": "hc-restricted-items#accordion-electronic-devices-on-board",
+  "answer": "You may carry e-cigarettes in carry-on baggage only for personal use, but using or recharging them on board is prohibited.",
+  "note": null
+ },
+ {
+  "id": "faq-motorized-suitcase",
+  "chunks": [
+   "hc-restricted-items#accordion-electronic-devices-on-board",
+   "hc-cabin-baggage#intro"
+  ],
+  "best": "hc-restricted-items#accordion-electronic-devices-on-board",
+  "answer": "No, motorized suitcases are not allowed on board or in the hold.",
+  "note": null
+ },
+ {
+  "id": "faq-coat-towel-blanket",
+  "chunks": [
+   "hc-cabin-baggage#intro",
+   "gcc-wah-2023-03-01#15.3.5"
+  ],
+  "best": "hc-cabin-baggage#intro",
+  "answer": "Yes, a coat or blanket can be taken on board free in addition to your bag.",
+  "note": "Towels are not mentioned in the sources."
+ },
+ {
+  "id": "faq-trolley-sizer",
+  "chunks": [
+   "gcc-wah-2023-03-01#15.3.3",
+   "hc-cabin-baggage#accordion-trolley-bag-additional-cabin-luggage"
+  ],
+  "best": "gcc-wah-2023-03-01#15.3.3",
+  "answer": "If it exceeds the size limits you must pay an oversize fee at the boarding gate, and Wizz Air may carry it as checked baggage.",
+  "note": null
+ },
+ {
+  "id": "faq-infant-extra-bag",
+  "chunks": [
+   "hc-childrens-baggage#accordion-luggage-for-infant-0-2-years"
+  ],
+  "best": "hc-childrens-baggage#accordion-luggage-for-infant-0-2-years",
+  "answer": "Yes, one additional personal item (40 x 30 x 20 cm, max 10 kg) is allowed free as the infant's luggage.",
+  "note": null
+ },
+ {
+  "id": "faq-carry-on-placement",
+  "chunks": [
+   "hc-cabin-baggage#accordion-free-carry-on-bag",
+   "fees-fares-bundles#accordion-wizz-go-wizz-family-go",
+   "fees-fares-bundles#accordion-wizz-plus-wizz-family-plus"
+  ],
+  "best": "hc-cabin-baggage#accordion-free-carry-on-bag",
+  "answer": "Under the seat in front of you.",
+  "note": null
+ },
+ {
+  "id": "faq-refund-unused-bag",
+  "chunks": [],
+  "best": null,
+  "answer": "REFUSE",
+  "note": "Sources don't cover refunds of baggage fees."
+ },
+ {
+  "id": "faq-priority-sold-out",
+  "chunks": [],
+  "best": null,
+  "answer": "REFUSE",
+  "note": "Sources don't say what happens when WIZZ Priority is sold out."
+ },
+ {
+  "id": "tricky-basic-fare-10kg",
+  "chunks": [
+   "hc-checked-in-baggage#intro"
+  ],
+  "best": "hc-checked-in-baggage#intro",
+  "answer": "The premise is wrong: the basic fare includes no checked bag; you buy a checked bag (10, 20, 26 or 32 kg) separately.",
+  "note": "False premise: the basic fare has no 10 kg checked bag included."
+ },
+ {
+  "id": "tricky-cat-carrier",
+  "chunks": [
+   "hc-special-baggage#accordion-animals",
+   "gcc-wah-2023-03-01#15.6.1",
+   "gcc-wah-2023-03-01#15.4.1"
+  ],
+  "best": "hc-special-baggage#accordion-animals",
+  "answer": "None: cats and other pets are not allowed on Wizz Air flights; only guide/assistance dogs.",
+  "note": "False premise: pets are not carried in the cabin."
+ },
+ {
+  "id": "tricky-e-cig-checked",
+  "chunks": [
+   "hc-restricted-items#accordion-electronic-devices-on-board",
+   "hc-restricted-items#accordion-lithium-batteries"
+  ],
+  "best": "hc-restricted-items#accordion-electronic-devices-on-board",
+  "answer": "No. E-cigarettes are prohibited in checked baggage and must be carried in carry-on baggage.",
+  "note": null
+ },
+ {
+  "id": "tricky-wheels-4cm",
+  "chunks": [
+   "hc-cabin-baggage#accordion-free-carry-on-bag",
+   "gcc-wah-2023-03-01#15.3.1"
+  ],
+  "best": "hc-cabin-baggage#accordion-free-carry-on-bag",
+  "answer": "Yes. Wheels are not counted in the size allowance as long as they add no more than 5 cm, so 4 cm is fine.",
+  "note": null
+ },
+ {
+  "id": "tricky-power-bank-120wh",
+  "chunks": [
+   "hc-restricted-items#accordion-lithium-batteries"
+  ],
+  "best": "hc-restricted-items#accordion-lithium-batteries",
+  "answer": "No. Power banks over 100 Wh are forbidden; the 100-160 Wh approval rule applies to spare batteries/equipment, not power banks.",
+  "note": null
+ },
+ {
+  "id": "tricky-checked-33kg",
+  "chunks": [
+   "gcc-wah-2023-03-01#15.1.1",
+   "hc-checked-in-baggage#intro"
+  ],
+  "best": "gcc-wah-2023-03-01#15.1.1",
+  "answer": "No. Each checked bag may weigh at most 32 kg and heavier bags are refused, so you must repack.",
+  "note": null
+ },
+ {
+  "id": "tricky-high-season-boundary",
+  "chunks": [
+   "fees-all-services#baggage-fees"
+  ],
+  "best": "fees-all-services#baggage-fees",
+  "answer": "High season: the Easter peak runs 21 March to 20 April 2026, so 20 April 2026 is included.",
+  "note": null
+ },
+ {
+  "id": "tricky-conflict-declared-value",
+  "chunks": [
+   "hc-checked-in-baggage#accordion-special-declaration-for-value",
+   "gcc-wah-2023-03-01#17.2.6",
+   "gcc-wah-2023-03-01#annex-7"
+  ],
+  "best": "hc-checked-in-baggage#accordion-special-declaration-for-value",
+  "answer": "Per the Help Centre, with a High Value Declaration the limit is the declared value up to 2,500 EUR (about 2,010 SDR) per checked bag.",
+  "note": "Help Centre (2,500 EUR) and GCC (2,224 SDR, ~EUR 2,800) disagree; the Help Centre takes precedence."
+ },
+ {
+  "id": "tricky-priority-cost-and-size",
+  "chunks": [
+   "fees-all-services#wizz-priority",
+   "hc-cabin-baggage#accordion-trolley-bag-additional-cabin-luggage",
+   "gcc-wah-2023-03-01#15.3.2"
+  ],
+  "best": null,
+  "answer": "A trolley bag comes with WIZZ Priority, which costs EUR 13-60 online or EUR 65-75 at the airport; the trolley may be at most 55 x 40 x 23 cm and 10 kg.",
+  "note": null
+ },
+ {
+  "id": "tricky-damage-deadline-and-limit",
+  "chunks": [
+   "hc-bags-reporting-procedure#accordion-damaged-baggage",
+   "gcc-wah-2023-03-01#18.2.4",
+   "gcc-wah-2023-03-01#18.2.7",
+   "gcc-wah-2023-03-01#annex-8",
+   "gcc-wah-2023-03-01#17.2.6",
+   "gcc-wah-2023-03-01#annex-6"
+  ],
+  "best": null,
+  "answer": "Report it immediately at the airport (PIR), or within 7 days if the damage was not noticeable on arrival; liability is limited to 1,288 SDR (about EUR 1,600) without a value declaration.",
+  "note": null
+ },
+ {
+  "id": "tricky-excess-22kg",
+  "chunks": [
+   "hc-checked-in-baggage#accordion-excess-baggage",
+   "fees-all-services#baggage-fees"
+  ],
+  "best": "hc-checked-in-baggage#accordion-excess-baggage",
+  "answer": "2 extra kg at 13 EUR/kg = 26 EUR per the Help Centre (the fees page range EUR 13-15/kg gives 26-30 EUR).",
+  "note": "The Help Centre says 13 EUR/kg; the fees page gives EUR 13-15/kg."
+ },
+ {
+  "id": "tricky-off-topic-cancellation",
+  "chunks": [],
+  "best": null,
+  "answer": "REFUSE",
+  "note": "Off-topic: flight cancellation refunds are not covered by the baggage sources."
+ },
+ {
+  "id": "tricky-off-topic-name-change",
+  "chunks": [],
+  "best": null,
+  "answer": "REFUSE",
+  "note": "Off-topic: name changes are not covered."
+ },
+ {
+  "id": "tricky-other-airline",
+  "chunks": [],
+  "best": null,
+  "answer": "REFUSE",
+  "note": "Sources cover only Wizz Air, not Ryanair."
+ }
+]

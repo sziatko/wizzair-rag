@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Downloaded Wizz Air documents are not ours to publish; download.py fetches them
+data/
+
+# Secrets
+.env
+
+# Personal working brief
+wizz-air-rag-handoff.md
