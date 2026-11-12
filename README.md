@@ -6,7 +6,7 @@ answer the question, the assistant politely refuses and points to the Wizz Air H
 instead of guessing.
 
 The evaluation set was written before the pipeline, and the project measures the
-pipeline against it: retrieval metrics and answer accuracy on 210 questions, following
+pipeline against it: retrieval metrics and answer accuracy on 325 questions, following
 the [Claude Cookbook RAG guide](https://platform.claude.com/cookbook/capabilities-retrieval-augmented-generation-guide).
 
 This is a personal project, not affiliated with Wizz Air. Answers are not official advice.
@@ -55,96 +55,108 @@ How the labels were made honest:
   the chunks. Only those it could not answer stayed `no-answer`; partly answerable ones
   became `tricky` groups with a partial reference answer.
 
+A second set, `evals/questions-external.json`, has 115 questions written by Gemini and GPT
+from two fixed prompts (`evals/candidates/prompts.md`), to see whether Claude's own wording
+flatters the metrics. Three subagents with fresh context labelled them blind and a fourth tried
+to answer the partial ones completely (decision 12): 72 answerable, 30 partial, 12 off-topic,
+1 unanswerable. Every report splits the numbers by `source` (claude, gemini, gpt). The
+results below cover all 325 questions.
+
 How it is scored:
 
 - **Retrieval**, as in the Cookbook: precision, recall, F1 and MRR against the labelled
   chunks, per question and per group (a group passes when all its wordings found all
   its chunks). `hit@3 any` also counts other chunks that hold the same fact.
 - **Answers**: refusals are graded from the `kind` field, not the text. Other replies go
-  to an LLM judge (Claude Sonnet 5.5; the baseline below was judged by Claude Opus 5.5)
-  that sees the question, the reference answer and the
-  excerpts. On conflict groups only a reply with both values counts; on partial groups
+  to an LLM judge (DeepSeek V4 Pro) that sees the question, the reference answer and
+  the excerpts that hold the fact plus the ones the reply cites. On conflict groups only a reply with both values counts; on partial groups
   the reply must give the known part and say what the sources do not cover.
-- **Judge check**: a second model (Claude Opus 5.5 now, Claude Sonnet 5.5 for the
-  baseline) re-grades a random sample of the judge's verdicts without seeing them;
+- **Judge check**: a second model from another family (Claude Sonnet 5.5) re-grades a random sample of the judge's verdicts without seeing them;
   disagreements are reviewed by hand.
 - Retrieval is deterministic and runs once; answers run 3 times to show the spread.
 
 ## Results
 
-Level 1 baseline, run on 2026-11-11 against the snapshot of 2026-11-09:
-`voyage-4-large` top 3, answers by Claude Haiku 5.5, judge Claude Opus 5.5, 3 runs.
-Raw results: `evals/results/2026-11-11T1824.json`.
+One protocol for every number below (decisions 10 and 13), run on 2026-11-12 against the
+snapshot of 2026-11-09: the answer schema that limits citations to the retrieved ids
+(decision 11), 3 runs per combination, DeepSeek V4 Pro as the judge, Claude Sonnet 5.5
+re-grading 30 verdicts per file. This replaces the earlier 210-question table (decision 10).
+Raw results: `evals/results/2026-11-12T*.json`.
 
-**Retrieval** (194 questions whose answer is in the sources):
+**Answer accuracy**, all 325 questions (mean over 3 runs; min-max in brackets for `all`).
+A = top 3, B = top 10, C = top 10 reordered by a Voyage `rerank-2.5` reranker, best 3 kept:
 
-| Kind | Questions | Precision | Recall | F1 | MRR | Groups passed | hit@3 any |
+| Kind | Questions | Haiku, A | Haiku, B | Haiku, whole corpus | Flash, A | Flash, B | Flash, C | Flash, whole corpus |
+|---|---|---|---|---|---|---|---|---|
+| fact | 159 | 88% | 89% | 87% | 86% | 90% | 89% | 92% |
+| faq | 62 | 70% | 75% | 81% | 68% | 81% | 69% | 84% |
+| tricky | 92 | 57% | 75% | 74% | 62% | 76% | 66% | 75% |
+| no-answer | 12 | 100% | 89% | 97% | 97% | 97% | 94% | 97% |
+| **all** | 325 | **76%** (74-78%) | **82%** (82-83%) | **82%** (81-84%) | **76%** (75-78%) | **85%** (83-86%) | **79%** (78-79%) | **86%** (84-86%) |
+| Claude's questions (210) | | 88% | 88% | 88% | 86% | 91% | 88% | 91% |
+| Gemini's questions (59) | | 68% | 81% | 69% | 67% | 81% | 68% | 74% |
+| GPT's questions (56) | | 41% | 62% | 76% | 51% | 67% | 55% | 78% |
+| pipeline errors (of 975) | | 0 | 0 | 0 | 2 | 5 | 1 | 15 |
+
+"Whole corpus" puts all 91 chunks (~16k tokens) in every prompt with no retrieval, as a
+ceiling for what retrieval could give. DeepSeek Flash is DeepSeek V4.1 Flash through
+DeepSeek's Anthropic-compatible API. C was run on Flash only; B on both models (decision 13).
+
+**Retrieval** (296 questions whose answer is in the sources; the same for both answer models):
+
+| Retrieval | Chunks to the model | Precision | Recall | F1 | MRR | Groups passed | any chunk with the fact |
 |---|---|---|---|---|---|---|---|
-| fact | 159 | 0.33 | 0.93 | 0.48 | 0.82 | 44/53 (83%) | 98% |
-| faq | 17 | 0.33 | 0.94 | 0.49 | 0.85 | 16/17 (94%) | 100% |
-| tricky | 18 | 0.39 | 0.69 | 0.50 | 0.75 | 10/16 (62%) | 83% |
-| all | 194 | 0.33 | 0.91 | 0.49 | 0.81 | 70/86 (81%) | 97% |
+| A: cosine | 3 | 0.31 | 0.86 | 0.46 | 0.74 | 148/188 (79%) | 97% |
+| B: cosine | 10 | 0.11 | 0.98 | 0.19 | 0.76 | 180/188 (96%) | 100% |
+| C: cosine + reranker | 3 | 0.33 | 0.92 | 0.49 | 0.84 | 162/188 (86%) | 98% |
 
-Precision is capped near 0.33 by design: most groups have one labelled chunk and the
-pipeline always returns three. F1 is computed from mean precision and recall, as in the
-Cookbook.
+On `tricky` questions alone recall is 0.71 (A), 0.95 (B) and 0.84 (C). Retrieval-only
+numbers, before any answer model, are in `evaluate retrieval` (recall@3/5/10 with and without
+the reranker). Precision is capped near 0.33 by design: most groups have one labelled chunk and
+A and C always return three.
 
-**Answer accuracy** (mean over 3 runs, min–max in brackets):
-
-| Kind | Questions | Accuracy | Refused | Pipeline errors |
-|---|---|---|---|---|
-| fact | 159 | 84% (82–85%) | 1% | 2 |
-| faq | 19 | 93% (89–95%) | 11% | 0 |
-| tricky | 21 | 76% (71–81%) | 19% | 0 |
-| no-answer | 11 | 45% (36–55%) | 45% | 1 |
-| all | 210 | 82% (81–82%) | 6% | 3 |
-
-**Judge check:** Claude Sonnet 5.5 re-graded 30 random verdicts blind and agreed on
-29 (97%). In the one disagreement, a manual review sided with the Opus judge.
-Judging all 3 runs cost about $7.40 (1.28M input and 117k output tokens on Opus 5.5).
-Given that agreement, later runs use Claude Sonnet 5.5 as the judge (about $3.70 for the
-same volume) and Opus 5.5 re-grades a sample of 30 (about $0.30).
-
-**Answer accuracy after the prompt fixes** (decision 8; 1 run, judge Claude Sonnet 5.5, so not exactly
-comparable with the Opus-judged baseline above; Opus agreed with Sonnet on 26 of 30 sampled verdicts):
-
-| Kind | Questions | Baseline | After fixes | Refused | Pipeline errors |
-|---|---|---|---|---|---|
-| fact | 159 | 84% | 90% | 3% | 1 |
-| faq | 19 | 93% | 95% | 11% | 0 |
-| tricky | 21 | 76% | 71% | 19% | 0 |
-| no-answer | 11 | 45% | 91% | 91% | 0 |
-| all | 210 | 82% | 89% | 10% | 1 |
-
-Refusals and invented conflicts improved. Two partial-answer `tricky` groups got worse,
-and one sub-clause citation still slips through. Raw results: `evals/results/2026-11-11T1916.json`.
+**Judge check:** Sonnet agreed with the DeepSeek Pro judge on 198 of 210 sampled verdicts
+(94%): 28/30 and 29/30 on the Haiku A and whole-corpus files, 29/30 on Flash A and the whole
+corpus, 27/30 on Haiku B, 26/30 on Flash B, 30/30 on C. The 12 disagreements were reviewed
+by hand (decision 17): Pro was wrong in 7, Sonnet in 4, one depends on the grading rule. Pro
+marked 6 correct replies as wrong and 1 wrong reply as correct, so the absolute numbers are a
+little low (about 3 points on the sample) for every answer model alike; the comparisons stand.
 
 ### What the numbers say
 
-- **Retrieval is mostly fine; the misses have a pattern.** When a fact is in both a GCC
-  clause and a Help Centre page, the GCC clause often wins the top 3 (damaged bags,
-  valuables, e-cigarettes). `hit@3 any` at 97% shows that most "misses" still retrieved
-  a chunk with the fact, but not always the most complete one. Tricky questions suffer
-  most: a false premise ("my cat's carrier", "a 10 kg bag on the basic fare") pulls
-  retrieval towards the premise, not the rule that corrects it.
-- **Refusals were the weak spot (baseline); the prompt fix mostly closed it.** At baseline
-  Haiku often replied with `kind: "answer"` and text like "the excerpts don't say how late
-  you can add a bag", so the passenger did not get the standard Help Centre message. After
-  the prompt change (decision 8) no-answer accuracy went from 45% to 91%, but two
-  partial-answer `tricky` groups got worse: the refusal rule is now slightly too strong.
-- **Haiku invented conflicts (baseline).** The conflict rule made it call two unrelated
-  clauses a disagreement (a reporting deadline vs the "bag is lost after 21 days" rule). It
-  also hedges with "probably not" where an exclusion clause gives a clear no. The prompt
-  now defines a conflict as two values for the same thing; real conflict groups stayed correct.
+- **Retrieval limits the answers, and 10 chunks nearly remove the limit.** Top 3 gives 76%
+  for both models; the whole corpus gives 82% (Haiku) and 86% (Flash). With 10 chunks Haiku
+  reaches 82% and Flash 85%, within the whole-corpus ranges, with about a sixth of the whole
+  corpus's input tokens (Flash). The gain is
+  on `faq` (+13 points) and `tricky` (+14), where A misses a labelled chunk (recall 0.71 on
+  `tricky`); on `fact` the answer model is the limit, not retrieval.
+- **The reranker helps retrieval more than answers.** C raises recall at 3 from 0.86 to 0.92
+  and MRR from 0.74 to 0.84, but accuracy only from 76% to 79% (ranges 75-78% and 78-79%
+  nearly touch). B is clearly better than C on Flash (83-86% against 78-79%). By the rule of
+  decision 13 the reranker does not enter the pipeline: it is not clearly better than A and
+  B, and it adds a second API call.
+- **Gemini's and GPT's questions are harder than Claude's** for the same pipeline (A: 88%
+  against 68% and 41% for Haiku). They are less literal and retrieval finds their chunks
+  less often (recall 0.85 and 0.70 against 0.91 for Claude's), so Claude's own wording did
+  flatter the first baseline. With 10 chunks the gap narrows (Flash B: 91%, 81%, 67%; Haiku B: 88%, 81%, 62%).
+- **DeepSeek Flash is not better than Haiku at equal context**: with top 3 both score 76%.
+  Flash wins with a long context (whole corpus 86% against 82%), but its 15 pipeline errors
+  there (1.5% of answers) are format failures that count as wrong: broken JSON (6), a missing
+  `reply` wrapper (5), a citation outside the allowed ids (4). Nothing constrains DeepSeek's
+  output to the schema. Haiku had none, since the schema constrains its decoding.
+- **Sub-clause citations are gone** for Haiku: the id enum of decision 11 made 0 errors in
+  1,950 answers, where decision 10 had 14 in 1,260.
+- **Haiku refuses more with the whole corpus on tricky questions** (26% against Flash's
+  24%; with 10 chunks 22%); the earlier gap (29% against 16%) shrank on the larger set.
+- **Retrieval misses have a pattern.** When a fact is in both a GCC clause and a Help
+  Centre page, the GCC clause often wins the top 3 (damaged bags, valuables,
+  e-cigarettes). A false premise ("my cat's carrier", "a 10 kg bag on the basic fare")
+  pulls retrieval towards the premise, not the rule that corrects it.
 - **Answers that miss a second fact.** Many wrong replies are right but incomplete: they
-  give the size but not the price, or the deadline but not the liability limit, often
-  because the second chunk was not retrieved.
-- **Sub-clause citations (3 errors in 630 replies at baseline, 1 in 210 after the fix):** Haiku
-  cites an id like `15.1.6.3` that is inside a retrieved chunk but is not a chunk id. The run
-  records it as a wrong answer. The prompt reduces it; a per-call enum in the schema would remove it.
-- **Synthetic vs real wording:** FAQ questions score as well as or better than the
-  model-written fact questions, so there is no sign that one model's wording inflates
-  the metrics.
+  give the size but not the price, or the deadline but not the liability limit.
+- **Cost:** the matrix, B, C and the retrieval experiment took about $8.3 of DeepSeek
+  credit (answers and 6 judged files); Haiku B added about $2.2 (judging; Haiku's Anthropic
+  cost was not measured).
 
 ## Trade-offs
 
@@ -154,9 +166,10 @@ and one sub-clause citation still slips through. Raw results: `evals/results/202
   verbatim, but chunk sizes vary from 84 to ~5,900 characters.
 - **Two kinds of source; on a conflict, show both.** The GCC is binding, the Help Centre
   is what passengers read. Picking one would mean the assistant decides for the passenger.
-- **A cheap answer model under a stronger judge.** Haiku 5.5 keeps the cost per answer
-  tiny. The judge is Sonnet 5.5, not Opus 5.5: it costs half as much and agreed with
-  Opus on 29 of 30 verdicts. Opus still re-grades a sample of every run, so drift shows.
+- **Cheap answer models under a stronger judge.** Haiku 5.5 and DeepSeek Flash keep the
+  cost per answer tiny. The judge is DeepSeek V4 Pro and Sonnet 5.5 re-grades a sample of
+  every run: judge and check come from different families, so a judge that goes easy on
+  its own family shows up (decision 10).
 - **No vector database.** 91 chunks (~16k tokens) fit in a numpy matrix.
 - **The judge sees the excerpts.** Without them it graded correct replies as wrong from
   its own idea of Wizz Air rules. With them it can accept an extra detail that is true in
@@ -168,7 +181,7 @@ The full reasoning is in [docs/decisions.md](docs/decisions.md).
 
 ## Run it
 
-Needs Python 3.14 and [uv](https://docs.astral.sh/uv/), plus Anthropic and Voyage AI API
+Needs Python 3.14 and [uv](https://docs.astral.sh/uv/), plus Anthropic, Voyage AI (embeddings and reranker) and DeepSeek API
 keys. Copy `.env.example` to `.env` and fill in the keys.
 
 ```bash
@@ -185,7 +198,15 @@ fees table is rendered by JavaScript and was saved once by hand (`fees-table.txt
 Evals:
 
 ```bash
-uv run --env-file .env python -m wizzair_rag.evaluate run 3        # writes evals/results/<date>T<time>.json
+uv run --env-file .env python -m wizzair_rag.evaluate run 3        # writes evals/results/<date>T<time>-<model>.json
+uv run --env-file .env python -m wizzair_rag.evaluate run 1 full   # whole corpus in the prompt, no retrieval
+uv run --env-file .env python -m wizzair_rag.evaluate run 3 deepseek-flash   # another answer model (DEEPSEEK_API_KEY in .env)
+uv run --env-file .env python -m wizzair_rag.evaluate run 1 sample=15        # smoke test: a fixed sample of 15 questions
+uv run --env-file .env python -m wizzair_rag.evaluate run 3 deepseek-flash k=10   # retrieve 10 chunks instead of 3
+uv run --env-file .env python -m wizzair_rag.evaluate run 3 rerank deepseek-flash   # top 10 reordered by a reranker, best 3 kept
+uv run --env-file .env python -m wizzair_rag.evaluate retrieval   # retrieval only: recall@3/5/10 and MRR, with and without the reranker (cents)
+uv run --env-file .env python -m wizzair_rag.evaluate judge evals/results/<file>.json     # judge only the replies without a verdict
+uv run --env-file .env python -m wizzair_rag.evaluate regrade evals/results/<file>.json   # re-judge all saved replies
 uv run python -m wizzair_rag.evaluate report evals/results/<file>.json
 uv run --env-file .env python -m wizzair_rag.evaluate check evals/results/<file>.json 30
 ```
@@ -200,6 +221,11 @@ uv run --env-file .env python tests/test_metrics.py
 
 ## Next
 
-Measured improvements on the same evals: summary indexing and re-ranking, a
-"whole corpus in the prompt" baseline (the corpus is only ~16k tokens), and question
-wordings from a different model family.
+1. **Level 2 was measured and does not help here** (decision 16): summaries added to the embedded
+   text give recall@3 0.87 against 0.86 for plain cosine; the reranker gives 0.92. The default
+   stays at 3 chunks and the reranker stays out for now (decision 15); both come back for review
+   when the corpus grows.
+2. **Constrain or repair DeepSeek's output**, if it becomes the default answer model: its
+   format errors are the only thing that keeps it behind in the whole-corpus run.
+3. **Fix the grading rule found in decision 17**: a reference answer per question, not per group, so
+   a reply is not marked down for facts its wording did not ask about.

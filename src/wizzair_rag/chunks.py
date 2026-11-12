@@ -51,6 +51,13 @@ def load_chunks(snapshot: str | None = None) -> list[Chunk]:
     return [Chunk(**json.loads(line)) for line in lines]
 
 
+def load_summaries(chunks: list[Chunk]) -> list[str]:
+    """Level 2 summaries (summarize.py), in the order of `chunks`; fails if one is missing."""
+    lines = (CHUNKS_DIR / chunks[0].snapshot / "summaries.jsonl").read_text(encoding="utf-8").splitlines()
+    by_id = {r["id"]: r["summary"] for r in map(json.loads, lines)}
+    return [by_id[c.id] for c in chunks]
+
+
 def make_chunk(source: Source, snapshot: str, unit: str, path: list[str], text: str, page: int | None = None) -> Chunk:
     url = f"{source.url}#page={page}" if page else source.url
     return Chunk(f"{source.id}#{unit}", source.id, source.carrier, source.effective_from, snapshot, path, page, url, text)

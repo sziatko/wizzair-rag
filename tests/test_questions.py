@@ -12,6 +12,10 @@ from wizzair_rag.chunks import load_chunks
 chunks = load_chunks()
 chunk_ids = {c.id for c in chunks}
 groups = json.loads(Path("evals/questions.json").read_text(encoding="utf-8"))
+# Questions written by other model families (Gemini, GPT), labelled by a blind verifier.
+external = json.loads(Path("evals/questions-external.json").read_text(encoding="utf-8"))
+assert all(g["source"] in ("gemini", "gpt") for g in external)
+groups += external
 
 ids = Counter(g["id"] for g in groups)
 assert not [i for i, n in ids.items() if n > 1], "duplicate group ids"
