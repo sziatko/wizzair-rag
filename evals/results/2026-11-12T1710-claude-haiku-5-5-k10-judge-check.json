@@ -1,0 +1,812 @@
+[
+ {
+  "group": "lost-21-days",
+  "question": "lost luggage compensation claim documents",
+  "reference": "If the bag is not found within 21 days of the report, Wizz Air is liable for the loss; submit a claim under 'Bag loss' with the PIR, baggage tag, boarding pass and bank details.",
+  "reply": "For lost baggage that is not found within 21 days of reporting it, submit a claim under the \"Bag loss\" category on the Wizz Air website. Attach a copy of the PIR, the baggage tag, the boarding pass and your bank details. Make sure the value of your baggage is stated in the PIR. The General Conditions also say to attach the PIR, or clearly identifiable particulars of the claim if the PIR is difficult to complete, along with all documents proving your claim.",
+  "judge": {
+   "reason": "The reply includes the key facts from the reference: claim under Bag loss after 21 days with PIR, baggage tag, boarding pass and bank details. Its additional points about stating baggage value in the PIR and attaching claim particulars/proof are supported by the excerpts and do not contradict the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 154,
+    "cached": 1152,
+    "out": 157
+   }
+  },
+  "check": {
+   "reason": "The reply gives all the key facts of the reference: the 21-day condition, the 'Bag loss' category, and the PIR, baggage tag, boarding pass and bank details. The extras (the value of the baggage stated in the PIR, and the General Conditions on attaching the PIR or identifiable particulars plus proof documents) are supported by the excerpts. Nothing contradicts the reference.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2009,
+    "cached": 0,
+    "out": 141
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gemini-prompt1-16",
+  "question": "My 4 year old has her own paid seat. Can we check her car seat for free in the hold alongside our pushchair?",
+  "reference": "Yes. A foldable pushchair/pram, travel cot or a car seat for a child over 2 can be checked in free of charge, and one pushchair per child is free. A booster seat is not allowed on board and is charged as additional luggage.",
+  "reply": "Yes. For a child over 2, a car seat can be checked in free of charge, and a foldable baby pushchair or pram can too. Both go to the aircraft hold and are tagged at the check-in desk, baggage drop-off desk, or boarding gate, and can be taken up to the aircraft door or steps (subject to local regulations). Prams and wheelchairs are carried free when the user is travelling. Note that electric or motorized strollers are not allowed.",
+  "judge": {
+   "reason": "The reply correctly states that for a child over 2 a car seat and pushchair/pram can be checked in the hold free of charge, which matches the reference and excerpts. It omits the booster-seat caveat, but that was not part of the asked scenario and does not contradict the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 127,
+    "cached": 1152,
+    "out": 346
+   }
+  },
+  "check": {
+   "reason": "The reply gives the reference's main answer (yes): a car seat for a child over 2 and a foldable pushchair can both be checked in free. Its extra details (tagging locations, carriage to the aircraft door, electric strollers not allowed) are supported by the excerpts. It omits the booster seat caveat, but that is a side note and does not contradict anything.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1949,
+    "cached": 0,
+    "out": 497
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "damage-noticed-later",
+  "question": "damaged luggage report deadline days",
+  "reference": "If you could not notice the damage on arrival, report it at the airport within 7 days of arrival; if the bag arrived later and damaged, report in writing within 21 days of delivery.",
+  "reply": "For damaged checked baggage the deadline is generally 7 days. If the damage cannot be recognised on receipt, you must report it at the airport within 7 days of receipt, and your written claim must be made as soon as you discover the damage and at the latest within 7 days. If the bag did not arrive with your flight and is delivered damaged or pilfered, your written report is due within 21 days after it was placed at your disposal.",
+  "judge": {
+   "reason": "The reply gives both key deadlines from the reference: 7 days if damage is discovered/recognised after receipt, and 21 days if the bag arrived later and was delivered damaged, without contradicting the reference. The additional written-claim detail is supported by the excerpts.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 203,
+    "cached": 1664,
+    "out": 248
+   }
+  },
+  "check": {
+   "reason": "The reply gives both key facts from the reference: a report at the airport within 7 days when the damage could not be noticed on arrival, and a written report within 21 days of delivery when the bag arrived late and damaged. The extra detail about the written claim being due within 7 days comes from excerpts 18.2.7.1 and annex 8, so it is supported and contradicts nothing.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2809,
+    "cached": 0,
+    "out": 133
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "cabin-neck-pillow",
+  "question": "travel pillow separate from carry-on allowed?",
+  "reference": "A neck pillow is not a separate free item; it must be packed inside your cabin bag, otherwise it may be charged as an extra item.",
+  "reply": "No, not as a separate free item. Wizz Air does not treat a neck pillow as a separate free item. It must fit within your cabin baggage allowance and be packed inside your cabin bag. If it does not fit within that allowance, it may be treated as an additional item and charged as oversized or excess baggage. The excerpts only mention neck pillows, so they do not say how other travel pillows are treated.",
+  "judge": {
+   "reason": "The reply correctly states that a neck pillow is not a separate free item and must be packed inside the cabin bag, otherwise it may be charged as an extra item. It also accurately notes the excerpts only cover neck pillows, not other travel pillows.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 108,
+    "cached": 896,
+    "out": 242
+   }
+  },
+  "check": {
+   "reason": "The reply matches the reference: a neck pillow is not a separate free item, it must be packed inside the cabin bag, and otherwise it may be charged as an extra item. The added note that the excerpts only cover neck pillows is accurate and does not contradict anything.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1569,
+    "cached": 0,
+    "out": 97
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "child-stroller-instead-of-trolley",
+  "question": "cabin stroller instead of trolley bag",
+  "reference": "A compact foldable stroller within 55 x 40 x 23 cm can be taken on board instead of the trolley bag if you have a trolley bag allowance; it then counts as your cabin baggage.",
+  "reply": "Yes, if you are travelling with a child. If you have a trolley bag allowance and a compact, foldable stroller that fits within 55 × 40 × 23 cm, you may bring the stroller on board instead of your trolley suitcase. In that case, the stroller counts as your cabin baggage and must fit in the cabin bag sizer and the overhead compartment.",
+  "judge": {
+   "reason": "The reply states the key facts: a compact foldable stroller within 55x40x23 cm may be brought on board instead of the trolley suitcase when the passenger has a trolley bag allowance, and it then counts as cabin baggage. The added condition 'travelling with a child' is supported by the excerpt noting items are extra luggage if the child is not travelling.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 165,
+    "cached": 768,
+    "out": 264
+   }
+  },
+  "check": {
+   "reason": "The reply gives all key facts from the reference: a compact foldable stroller within 55x40x23 cm, a trolley bag allowance required, and the stroller counts as cabin baggage. The extra details (cabin bag sizer, overhead compartment, travelling with a child) are supported by the excerpt, which says the stroller must fit the sizer and overhead compartment and that items count as extra luggage if the child is not travelling. No contradiction.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1409,
+    "cached": 0,
+    "out": 157
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "faq-trolley-sizer",
+  "question": "What happens if my trolley bag (max. 55 x 40 x 23 cm), which I purchased with WIZZ Priority, does not fit into the sizer?",
+  "reference": "A trolley bag larger than 55 x 40 x 23 cm (wheels may add max. 5 cm) results in additional fees: an oversize fee is paid at the boarding gate, and Wizz Air may carry the bag as checked baggage.",
+  "reply": "If your trolley bag exceeds the size limits, Wizz Air's Help Centre says additional fees will be charged. The General Conditions say oversize or overweight unchecked baggage is carried only after you pay the oversize/overweight excess fee at the boarding gate specified on the website, and Wizz Air may instead carry the bag as checked baggage. The excerpts do not state the amount of the fee.",
+  "judge": {
+   "reason": "The reply accurately states that an oversized trolley bag incurs additional fees, that the oversize fee is paid at the boarding gate, and that Wizz Air may carry it as checked baggage. It omits the 5 cm wheel allowance but does not contradict the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 97,
+    "cached": 896,
+    "out": 1176
+   }
+  },
+  "check": {
+   "reason": "The reply matches the reference: additional fees for exceeding the size limit, an oversize fee paid at the boarding gate, and Wizz Air may carry the bag as checked baggage. It omits the wheels allowance (max 5 cm), which is a minor detail, and its statement that the fee amount is not given is supported by the excerpts. It contradicts nothing.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1606,
+    "cached": 0,
+    "out": 131
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "faq-checked-included",
+  "question": "Is checked-in baggage included in the price of my flight?",
+  "reference": "Not in the basic fare; WIZZ Go and WIZZ Plus bundles include checked baggage.",
+  "reply": "It depends on your fare. The basic fare does not include any checked-in baggage allowance, but both WIZZ Go and WIZZ Plus bundles include checked-in baggage in the flight price. The WIZZ Go bundle includes a 20 kg checked-in bag. Check the details shown during booking to confirm what your bundle includes.",
+  "judge": {
+   "reason": "The reply correctly states that the basic fare excludes checked baggage and that WIZZ Go and WIZZ Plus include it, matching the reference and supported by the excerpts. The extra detail about WIZZ Go including a 20 kg bag is also supported by the excerpts.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 520,
+    "cached": 1024,
+    "out": 134
+   }
+  },
+  "check": {
+   "reason": "The reply matches the reference: basic fare has no checked baggage, while WIZZ Go and WIZZ Plus include it. The added detail that WIZZ Go includes a 20 kg bag is supported by the excerpts, and the advice to check booking details is consistent with the intro excerpt.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2444,
+    "cached": 0,
+    "out": 109
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "delay-expenses-limits",
+  "question": "My bag was 10 hours late on the way out. Can I claim what I bought meanwhile?",
+  "reference": "If baggage is delayed more than 24 hours on an outbound flight you can spend a reasonable amount on essentials for max. three days; claim in writing online within 21 days with receipts.",
+  "reply": "Probably not under the General Conditions. Clause 18.2.6 allows a reasonable spend on essential items only if the bag is delayed for more than 24 hours on an outbound flight, so a 10-hour delay does not meet that test. However, the Help Centre says that if a bag delay at the destination made you buy essential hygiene products and change clothes, you may claim those expenses back, and it sets no 24-hour threshold. The sources differ on this, so please check with Wizz Air before assuming you can claim. If you do claim, submit the claim form on the Wizz Air website under the \"Bag delay\" category with receipts, the PIR, your baggage tag and boarding pass, and only essential items at reasonable cost will be reimbursed.",
+  "judge": {
+   "reason": "The reply correctly states the General Conditions' 24-hour threshold for outbound delays and also notes that the Help Centre excerpt sets no such threshold, which the provided sources support; it gives both positions rather than asserting a definitive claim.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 232,
+    "cached": 1024,
+    "out": 1957
+   }
+  },
+  "check": {
+   "reason": "The reply gives the key reference fact that the General Conditions allow claims only after a delay of more than 24 hours, so a 10-hour delay does not qualify, and it contradicts nothing in the reference. It adds the Help Centre point that no 24-hour threshold is stated, which the excerpt supports, and it flags the difference between sources. It omits the max three days and the 21-day filing deadline, but these are secondary details and the main yes/no answer is consistent with the reference.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1937,
+    "cached": 0,
+    "out": 167
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gemini-prompt2-15",
+  "question": "We are traveling with a small dog in the cabin and also checking skis—how do we book both and can we still get Wizz Priority?",
+  "reference": "A small dog cannot travel in the cabin, because pets are not allowed except guide or assistance dogs. Skis can be added as sports equipment at booking or at least 3 hours before departure in your WIZZ Profile, and WIZZ Priority can be bought separately (online €13.00 – €60.00).",
+  "reply": "Small pets cannot travel in the cabin. Pets are not allowed on board except guide dogs, and only one assistance dog per flight is accepted, which must not occupy a seat. Skis can be carried as sports equipment for an additional fee, up to 149 x 119 x 171 cm and 32 kg. Add them during booking, which is recommended because availability is limited, or at least 3 hours before departure in your WIZZ Profile. WIZZ Priority can be added during booking or per flight per passenger for €13.00–€60.00 on wizzair.com or the call centre, or €65.00–€75.00 at the airport. It allows a trolley bag (55 x 40 x 23 cm, 10 kg) in the cabin. The sources do not say whether Priority can be combined with sports equipment, so please check with Wizz Air.",
+  "judge": {
+   "reason": "The reply gives the key facts from the reference: pets are not allowed except assistance dogs, skis can be added as sports equipment at booking or at least 3 hours before departure, and WIZZ Priority is available with the online €13.00–€60.00 price. It adds excerpt-supported details and its caveat about combining Priority with sports equipment does not contradict the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 1133,
+    "cached": 512,
+    "out": 1807
+   }
+  },
+  "check": {
+   "reason": "The reply matches the reference on every key fact: a small pet cannot travel in the cabin (only guide or assistance dogs), skis are added as sports equipment at booking or at least 3 hours before departure in the WIZZ Profile, and WIZZ Priority costs €13.00–€60.00 online. The extra details (size and weight limits, airport price, trolley bag size, one assistance dog per flight) are all supported by the excerpts. It also says plainly that the sources do not cover combining Priority with sports equipment, instead of guessing.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2589,
+    "cached": 0,
+    "out": 189
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gpt-prompt1-11",
+  "question": "I booked Basic by mistake I think. Does this include any trolley bag or just a small backpack under the seat?",
+  "reference": "Basic fare includes only the free carry-on bag, max 40 x 30 x 20 cm, which goes under the seat. A trolley bag is available only through WIZZ Priority.",
+  "reply": "Basic fare does not include a trolley bag. It includes one free carry-on bag (maximum 40 x 30 x 20 cm, 10 kg) that must fit under the seat in front of you, and a small backpack can be that bag. The Help Centre says a trolley bag is exclusively available as part of WIZZ Priority during booking, though it also says a larger carry-on can be purchased and brought on board, so check the options shown in your booking.",
+  "judge": {
+   "reason": "The reply correctly states Basic fare excludes a trolley bag and includes only the free carry-on bag (max 40 x 30 x 20 cm, 10 kg) under the seat, and that a trolley bag is available only via WIZZ Priority. Its additional note about purchasing a larger carry-on is supported by the excerpts and does not contradict the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 129,
+    "cached": 1024,
+    "out": 691
+   }
+  },
+  "check": {
+   "reason": "The reply gives the key facts from the reference: no trolley bag on Basic, a free carry-on of 40 x 30 x 20 cm under the seat, and a trolley bag only via WIZZ Priority. The 10 kg limit is supported by the excerpts. The remark about a larger carry-on being purchasable is also in the excerpts, and the excerpt itself ties the trolley bag to WIZZ Priority, so the reply does not contradict the reference.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1768,
+    "cached": 0,
+    "out": 164
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "pets-not-allowed",
+  "question": "Is my emotional support animal allowed on a Wizz Air flight?",
+  "reference": "Pets are not allowed on board; only guide and assistance dogs are accepted, and emotional support animals are not.",
+  "reply": "No. Emotional Support Animals are not accepted on Wizz Air flights. Pets are not allowed on board, except guide dogs and assistance dogs, and no other animals are accommodated on board.",
+  "judge": {
+   "reason": "The reply correctly states that emotional support animals are not accepted and that only guide/assistance dogs are allowed as exceptions to the no-pets rule, matching the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 28,
+    "cached": 1408,
+    "out": 100
+   }
+  },
+  "check": {
+   "reason": "The reply says emotional support animals are not accepted, pets are not allowed, and only guide and assistance dogs are exceptions. This matches the reference and the excerpts, with no contradictions or unsupported additions.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2296,
+    "cached": 0,
+    "out": 82
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "faq-damaged",
+  "question": "What should I do if my baggage has been damaged during the journey?",
+  "reference": "Report it at the airport desk and fill in a PIR, repair the bag and keep the receipt, then submit a 'Bag damage' claim on the Wizz Air website.",
+  "reply": "Tell a Wizz Air ground crew member at the arrival airport as soon as you notice the damage. Make an immediate report and complete a Property Irregularity Report (PIR) at the baggage claim, lost luggage or lost & found desk, including the brand, model, value and age of the bag. If the damage is not recognisable on arrival, report it at the airport within 7 days of arrival. Then repair the bag and keep the receipt, or if it is beyond repair, get a written confirmation from the repair shop showing its type and value. Finally, submit a bag damage claim on the Wizz Air website with the PIR copy and the repair receipt (or repair shop confirmation), and for the claim in writing, the time limit for damage is seven days from when you receive the bag.",
+  "judge": {
+   "reason": "The reply includes the reference steps (report at airport, complete PIR, repair and keep receipt, submit Bag damage claim online) and adds details such as the 7-day reporting/claim window and required bag details, all supported by the excerpts and not contradicting the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 1112,
+    "cached": 896,
+    "out": 362
+   }
+  },
+  "check": {
+   "reason": "The reply covers every key step in the reference: report at the airport desk and complete a PIR, repair the bag and keep the receipt, and submit a 'Bag damage' claim on the Wizz Air website. Its extra details (ground crew notification, brand/model/value/age, the 7-day limit, repair shop confirmation for bags beyond repair) are all supported by the excerpts, and nothing contradicts the reference.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 3049,
+    "cached": 0,
+    "out": 149
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "knives",
+  "question": "scissors blade length cabin",
+  "reference": "Sources differ: the general security list on the restricted items page prohibits knives and scissors with blades longer than 6 cm, while Wizz Air's own cabin baggage rules say unchecked baggage must not contain knives, scissors or other sharp objects at all.",
+  "reply": "The sources differ. The Help Centre's list of prohibited articles says scissors with blades of more than 6 cm, measured from the fulcrum, are not permitted in security restricted areas or on board. However, the General Conditions of Carriage (15.4.2) and the Help Centre's cabin baggage page say unchecked baggage must not contain scissors at all, with no blade length given. Please check with Wizz Air before you travel.",
+  "judge": {
+   "reason": "The reply correctly states that the sources differ, giving the 6 cm blade threshold from the prohibited articles list and the blanket scissors ban from the cabin baggage/GCC rules. It does not present one value as the only truth.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 96,
+    "cached": 2176,
+    "out": 248
+   }
+  },
+  "check": {
+   "reason": "The reply says the sources differ and gives both values: scissors with blades over 6 cm are prohibited per the restricted items list, while scissors are banned outright for unchecked baggage per the cabin baggage page and GCC 15.4.2. This matches the reference, and the extra detail (measured from the fulcrum) is supported by the excerpts.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 3676,
+    "cached": 0,
+    "out": 125
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gemini-prompt1-2",
+  "question": "I have Wizz Priority. Can I take both my laptop briefcase and a standard rollaboard trolley into the cabin, or does the laptop bag count as my only item?",
+  "reference": "Yes. With WIZZ Priority you can bring two bags: the free carry-on (laptop bag/briefcase, max 40 x 30 x 20 cm) under the seat plus the trolley bag (max 55 x 40 x 23 cm, 10kg) in the overhead compartment.",
+  "reply": "Yes. With WIZZ Priority you can bring two bags on board: a carry-on bag and a trolley bag. Your laptop briefcase can be the free carry-on, which must not exceed 40 x 30 x 20 cm and 10 kg and must go under the seat in front of you. The trolley bag must not exceed 55 x 40 x 23 cm and 10 kg, and must fit in the overhead compartment. Wheels may add no more than 5 cm, and handles are not counted. Anything larger will incur extra fees.",
+  "judge": {
+   "reason": "The reply correctly states that with WIZZ Priority the passenger may bring both a free carry-on/laptop bag (max 40 x 30 x 20 cm, 10 kg) under the seat and a trolley bag (max 55 x 40 x 23 cm, 10 kg) in the overhead compartment, with supported details about wheels and handles. It matches the reference and the excerpts.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 125,
+    "cached": 1536,
+    "out": 294
+   }
+  },
+  "check": {
+   "reason": "The reply matches the reference: yes, two bags; briefcase as free carry-on (40x30x20 cm) under the seat, trolley (55x40x23 cm, 10 kg) overhead. Extra details (10 kg carry-on, wheels 5 cm, handles excluded, extra fees) are supported by the excerpts.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2586,
+    "cached": 0,
+    "out": 122
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "bundle-wizz-smart",
+  "question": "Is there a bundle for a short trip with just a cabin suitcase and fast boarding?",
+  "reference": "WIZZ Smart includes WIZZ Priority (trolley bag 55 x 40 x 23 cm in the cabin and priority boarding), the carry-on bag, priority check-in and seat selection; no checked bag is listed.",
+  "reply": "Yes, the WIZZ SMART bundle is aimed at short trips and quick airport experiences. It includes a trolley bag (55 x 40 x 23 cm) guaranteed in the cabin area, except for operational reasons, and priority boarding, so you are called first to board.",
+  "judge": {
+   "reason": "The reply correctly identifies WIZZ SMART as the relevant bundle and gives the key facts: it includes a cabin trolley bag (55 x 40 x 23 cm) and priority boarding. It omits some additional inclusions but does not contradict the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 84,
+    "cached": 640,
+    "out": 442
+   }
+  },
+  "check": {
+   "reason": "The reply names WIZZ SMART, gives the trolley bag size 55 x 40 x 23 cm and priority boarding, all supported by the excerpt and consistent with the reference. It omits priority check-in and seat selection, but these are extra details rather than key facts for the question, and it contradicts nothing.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1122,
+    "cached": 0,
+    "out": 114
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "faq-motorized-suitcase",
+  "question": "CAN I TRAVEL WITH A MOTORIZED SUITCASE?",
+  "reference": "No. Motorized suitcases are not allowed on board or in the hold.",
+  "reply": "No. Motorized suitcases are not allowed for transportation, either onboard or in the aircraft hold.",
+  "judge": {
+   "reason": "The reply matches the reference: motorized suitcases are not allowed, either onboard or in the hold.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 58,
+    "cached": 1280,
+    "out": 99
+   }
+  },
+  "check": {
+   "reason": "The reply says no, motorized suitcases are not allowed onboard or in the hold. This matches the reference and the excerpts, and adds nothing unsupported.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2162,
+    "cached": 0,
+    "out": 65
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "checked-high-value-declaration",
+  "question": "My suitcase is very expensive. Can I get higher protection for it when I check it in?",
+  "reference": "Fill in a High Value Declaration form at the check-in desk and pay a fee to raise liability for a checked bag to the declared value; not possible at self bag-drop kiosks, one form per bag and per direction. Sources differ on the maximum: the Help Centre says 2500 EUR (approx. 2010 SDR), the GCC says 2,224 SDRs (approx. EUR 2,800).",
+  "reply": "Yes. You can make a special declaration of value for checked-in baggage. Fill in the High Value Declaration form and hand it to the check-in desk agent at the airport, then pay the applicable fees; it is not possible at self-baggage drop kiosks. The form is only accepted after verification by the airport agent, and the declared value is capped at 2500 EUR (approx. 2010 SDR) per checked-in bag. You will need proof of value, such as a purchase receipt. The General Conditions of Carriage state a higher limit of 2,224 SDRs (approx. EUR 2,800) after a special declaration and supplementary fee, so the sources differ on the figure; please check with Wizz Air before you travel.",
+  "judge": {
+   "reason": "The reply correctly confirms higher protection is available, explains the High Value Declaration process at the check-in desk, notes it is not possible at self-bag-drop kiosks, gives the per-bag cap, and accurately presents both conflicting maximum figures from the GCC and Help Centre as source differences.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 229,
+    "cached": 1408,
+    "out": 2099
+   }
+  },
+  "check": {
+   "reason": "The reply gives the form, check-in desk, fee and no-kiosk facts, and presents both maximums (2500 EUR/~2010 SDR vs 2,224 SDRs/~EUR 2,800) while saying the sources differ. It omits one form per bag and per direction, but that is a detail rather than a contradiction, and the extra details (verification, proof of value) are supported by the excerpts.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2468,
+    "cached": 0,
+    "out": 144
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "sports-equipment-limits",
+  "question": "What are the limits for sports equipment?",
+  "reference": "One set of sports equipment per passenger, max. 149 x 119 x 171 cm and 32 kg, for a fee. Sources differ on when to add it: the Help Centre says at booking or later in the WIZZ Profile at least 3 hours before departure; the GCC says you must inform Wizz Air at the time of booking through the Call Centre.",
+  "reply": "Sports equipment: you may transport one set/piece for an additional fee, and it cannot exceed 149 x 119 x 171 cm or weigh more than 32 kg. Add it at booking creation or at least 3 hours before departure in your WIZZ Profile. Other sporting equipment needs Wizz Air approval, contacting Live Chat at least 72 hours before departure. The General Conditions also say that sport equipment must be declared at booking via the Call Centre, and carriage is only with Wizz Air's consent.",
+  "judge": {
+   "reason": "The reply includes the key facts from the reference: one set/piece for a fee, max 149 x 119 x 171 cm and 32 kg, and it gives both the Help Centre timing and the GCC booking-via-Call-Centre requirement, so it covers the differing source guidance without contradicting the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 207,
+    "cached": 896,
+    "out": 2443
+   }
+  },
+  "check": {
+   "reason": "The reply gets the limits right (one set, 149 x 119 x 171 cm, 32 kg, extra fee) and gives both timing rules. It frames the General Conditions as 'also' saying something, as if the two agree, and never says the Help Centre and GCC differ on when to add the equipment. The reference requires that difference to be stated.",
+   "correct": false,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1713,
+    "cached": 0,
+    "out": 436
+   }
+  },
+  "agree": false
+ },
+ {
+  "group": "checked-high-value-declaration",
+  "question": "My suitcase is very expensive. Can I get higher protection for it when I check it in?",
+  "reference": "Fill in a High Value Declaration form at the check-in desk and pay a fee to raise liability for a checked bag to the declared value; not possible at self bag-drop kiosks, one form per bag and per direction. Sources differ on the maximum: the Help Centre says 2500 EUR (approx. 2010 SDR), the GCC says 2,224 SDRs (approx. EUR 2,800).",
+  "reply": "Yes. You can make a special declaration of value at check-in by filling in the High Value Declaration form and paying the applicable fees; the form is handed to the check-in desk agent and the fees are paid at the airport, and it is not possible at self-baggage drop kiosks. Liability is then raised to the declared value, up to a maximum of 2500 EUR (approx. 2010 SDR) per checked-in baggage. You will need proof of value, such as a purchase receipt, and a separate form is needed for each checked bag and each flight direction. The General Conditions of Carriage state a limit of 2,224 SDRs (approximately EUR 2,800) for checked-in luggage with a special declaration, which differs from the 2500 EUR maximum in the Help Centre, so please check with Wizz Air which applies to your case. Note that the excerpts do not say whether the 2,224 SDR figure and the 2500 EUR figure refer to the same fee level.",
+  "judge": {
+   "reason": "The reply gives the key facts: make a High Value Declaration at check-in with the form and fee, not at self bag-drop, liability raised to declared value, one form per bag and per direction. It presents both maximums and notes the sources differ, matching the reference.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 283,
+    "cached": 1408,
+    "out": 233
+   }
+  },
+  "check": {
+   "reason": "The reply gives the key facts from the reference: High Value Declaration form at check-in, fee paid, liability raised to the declared value, not possible at self bag-drop kiosks, and separate forms per bag and per direction. It also says the sources differ on the maximum, giving 2500 EUR (approx. 2010 SDR) from the Help Centre and 2,224 SDRs (approx. EUR 2,800) from the GCC. The extra detail about proof of value is supported by the excerpts, and the closing note about the fee level is a reasonable caveat that does not contradict anything.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2546,
+    "cached": 0,
+    "out": 202
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gpt-prompt1-27",
+  "question": "We arrived yesterday and noticed one wheel is completely broken off our suitcase. Can I still report it today or did I have to do it at the airport?",
+  "reference": "Damage should be reported at the airport baggage desk straight away; if it could not be recognised on arrival you can still report at the airport within 7 days after arrival, and a written claim is due within 7 days of discovering it. A wheel broken off prevents functional use, so it is not minor cosmetic damage (which is excluded).",
+  "reply": "Yes, you can still report it today, but the sources expect you to report it at the airport. If the damage was impossible to recognise on arrival, you can make a Property Irregularity Report (PIR) at the airport within 7 days of arrival, and the written claim must also be made within 7 days. A broken wheel may be easy to see on arrival, in which case the report should have been made immediately at the airport. Then submit the claim on the Wizz Air website under Bag damage, with the PIR copy and the repair shop receipt. The excerpts do not say whether a report made after leaving the airport is accepted.",
+  "judge": {
+   "reason": "The reply correctly gives the 7-day airport reporting window for damage that could not be recognised on arrival, the 7-day written claim requirement, and notes that a visible broken wheel should have been reported immediately. It does not contradict the reference and stays within the excerpts' conditions.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 211,
+    "cached": 1664,
+    "out": 1321
+   }
+  },
+  "check": {
+   "reason": "The reply matches the reference on the key facts: report at the airport, with a PIR within 7 days if the damage wasn't recognisable on arrival, and a written claim within 7 days. It contradicts nothing, and its extra details (website claim, PIR copy and repair receipt) are supported by the excerpts. It omits the point that a broken wheel prevents functional use and is not excluded cosmetic damage, but this is a minor omission that doesn't affect the answer to the question.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2835,
+    "cached": 0,
+    "out": 805
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "checked-10kg-one-only",
+  "question": "Instead of one 20 kg bag, can I book two 10 kg bags for myself?",
+  "reference": "Each passenger can buy at most one 10 kg checked-in bag.",
+  "reply": "No, not two 10 kg bags. Each passenger can purchase a maximum of one 10 kg checked-in bag. You can check in up to six pieces of baggage per flight, with a fee for each item, so you could combine one 10 kg bag with other bag sizes, such as a 20 kg bag.",
+  "judge": {
+   "reason": "The reply states the key fact from the reference that each passenger can purchase at most one 10 kg checked-in bag, and its extra details about up to six items and combining sizes are supported by the excerpts.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 89,
+    "cached": 896,
+    "out": 231
+   }
+  },
+  "check": {
+   "reason": "The reply gives the key fact from the reference (max one 10 kg checked-in bag per passenger, so two are not allowed) and adds details (up to six pieces, fee per item, combining with other sizes) that the excerpts support. Nothing contradicts the reference.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1545,
+    "cached": 0,
+    "out": 99
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gemini-prompt1-25",
+  "question": "Am I allowed to pack spare CO2 cartridges for my bike tire inflator in my checked bike box?",
+  "reference": "No. Condensed gas is excluded from carriage, with the only exceptions being CO2 used for moving artificial limbs and containers of inflammable gas used for self-inflating lifejackets; bike tyre inflator cartridges are not among the exceptions.",
+  "reply": "No. The excerpts exclude condensed gas from carriage in checked or unchecked baggage. The only CO2 exception is CO2 used for moving an artificial limb, and the only other exception is a container of inflammable gas used for a self-inflating lifejacket. CO2 cartridges for a bike tyre inflator are not listed as an exception, so they should not be packed in your bike box. The excerpts do not mention tyre inflator cartridges specifically, so please check with Wizz Air if you need certainty.",
+  "judge": {
+   "reason": "The reply correctly says condensed gas is excluded and that the only CO2 exception is for artificial limbs, with no exception for bike tyre inflator cartridges. It does not contradict the reference and adds only a safe caveat.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 201,
+    "cached": 2176,
+    "out": 204
+   }
+  },
+  "check": {
+   "reason": "The reply gives the reference's key facts: a clear no, condensed gas is excluded, and the only exceptions are CO2 for artificial limbs and inflammable gas containers for self-inflating lifejackets. It notes that bike inflator cartridges are not among them. The closing suggestion to check with Wizz Air does not contradict the reference, and the excerpts support everything else.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 3874,
+    "cached": 0,
+    "out": 136
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gpt-prompt2-13",
+  "question": "I'm travelling with my 2-year-old and have WIZZ Priority. Can I take a stroller, a cabin bag for myself and a separate small bag with the baby's food?",
+  "reference": "Yes. A foldable stroller can be taken to the aircraft door free (or in the cabin instead of your trolley if compact, 55 x 40 x 23 cm), you may bring your carry-on and a trolley with Priority, and an infant can have food for the flight plus one extra 40 x 30 x 20 cm personal item. Whether a 2 year old counts as infant (0-2) or child (2-14) is not made clear.",
+  "reply": "Stroller: a foldable pushchair for a child over 2 can be checked in free of charge, tagged at check-in, the drop-off desk or the gate, and taken to the aircraft door. If your stroller is compact, foldable and fits 55 x 40 x 23 cm, and you have the trolley bag allowance (WIZZ Priority), you may bring it on board instead of your trolley suitcase. It then counts as your cabin baggage and must fit the cabin bag sizer and the overhead compartment. Cabin bags: each passenger, including your child, may bring one free carry-on bag up to 40 x 30 x 20 cm. With WIZZ Priority you can also bring a trolley bag up to 55 x 40 x 23 cm and 10 kg. Baby food: the sources allow free flight food for children under two and for infants aged 0-2. They do not say whether a 2-year-old may have a separate food bag, so I cannot confirm that part. Please check with Wizz Air.",
+  "judge": {
+   "reason": "The reply correctly covers the stroller and cabin bag allowances and notes the 0-2 vs 2-14 ambiguity, but it omits the reference's key fact that an infant may take food plus an extra 40 x 30 x 20 cm personal item, which is the relevant provision for a separate small baby-food bag. It therefore fails to give a key fact from the reference.",
+   "correct": false,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 245,
+    "cached": 2304,
+    "out": 2070
+   }
+  },
+  "check": {
+   "reason": "The reply matches the reference on the stroller (free to the aircraft door, or in the cabin instead of the trolley if compact and within 55 x 40 x 23 cm) and on the carry-on plus trolley with Priority. It also flags that the sources don't settle whether a 2-year-old counts as an infant or a child for the food and separate bag, which is the reference's caveat. It omits the infant's extra 40 x 30 x 20 cm personal item, but it states the same size for a child's carry-on and contradicts nothing.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 3865,
+    "cached": 0,
+    "out": 782
+   }
+  },
+  "agree": false
+ },
+ {
+  "group": "child-booster-seat",
+  "question": "booster seat free?",
+  "reference": "A booster seat is not allowed on board and is treated as additional luggage, subject to charges.",
+  "reply": "No. A booster seat is not permitted on board and will be treated as additional luggage, subject to applicable charges.",
+  "judge": {
+   "reason": "The reply correctly states that a booster seat is not permitted on board and is treated as additional luggage subject to charges, matching the reference and excerpt.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 78,
+    "cached": 768,
+    "out": 110
+   }
+  },
+  "check": {
+   "reason": "The reply says a booster seat is not free, is not permitted on board, and is treated as additional luggage subject to charges. This matches the reference and the excerpt, with nothing contradicted or added.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1283,
+    "cached": 0,
+    "out": 75
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "tricky-high-season-boundary",
+  "question": "I'm flying on 20 April 2026. Do I pay the low or the high season baggage fee?",
+  "reference": "Yes: the Easter 2026 peak runs from 21 March to 20 April 2026, so 20 April is still high season.",
+  "reply": "20 April 2026 falls in the high season. The Easter 2026 peak runs from 21 March 2026 to 20 April 2026, so the high season baggage fee applies. Fees also vary by bag weight and by whether you pay online, through the Call Centre or at the airport. For example, a high season max. 10 kg bag booked on WIZZAIR.COM or through the Call Centre costs €9.00 – €115.00 per flight, per passenger and per bag. The excerpts do not say whether 20 April counts as a peak day for every purpose, so check with Wizz Air if you need certainty.",
+  "judge": {
+   "reason": "The reply correctly states that 20 April 2026 falls within the Easter 2026 high season and that the high season baggage fee applies, matching the reference. The extra fee examples are supported by the excerpt, and the general hedging comment does not contradict the key answer.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 197,
+    "cached": 1024,
+    "out": 624
+   }
+  },
+  "check": {
+   "reason": "The reply says 20 April 2026 is high season because the Easter 2026 peak runs 21 March to 20 April 2026, which matches the reference. The 10 kg high season fee range of €9.00 – €115.00 is supported by the excerpt. The closing hedge is unnecessary but does not contradict the answer.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1838,
+    "cached": 0,
+    "out": 254
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gpt-prompt2-12",
+  "question": "Can I put a power bank and spare lithium batteries in my checked suitcase if I switch them off and wrap them separately?",
+  "reference": "No. Power banks must not be in checked baggage, and spare lithium batteries must be carried in cabin baggage only, individually protected from short circuits.",
+  "reply": "No. Power banks must not be put in checked baggage and must be carried where you can continuously monitor them during the flight. Spare batteries are also forbidden in checked baggage, even if they are individually protected, and must be carried in cabin baggage only. Switching them off or wrapping them does not change this.",
+  "judge": {
+   "reason": "The reply states the key facts: power banks are not allowed in checked baggage and spare lithium batteries must be in cabin baggage only, even if individually protected. This matches the reference and is supported by the excerpts.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 61,
+    "cached": 1664,
+    "out": 154
+   }
+  },
+  "check": {
+   "reason": "The reply says no, matching the reference. It states that power banks are not allowed in checked baggage and that spare batteries are cabin-only even when individually protected. The extra point about monitoring power banks during the flight is supported by the excerpt, and nothing contradicts the reference.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2871,
+    "cached": 0,
+    "out": 101
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "gpt-prompt2-2",
+  "question": "My small backpack can be 45 x 35 x 20 cm for free, right? I don't have to pay for priority if it fits under the seat?",
+  "reference": "No. The free carry-on is 40 x 30 x 20 cm, so 45 x 35 x 20 cm is too big and will be charged (cabin baggage fee at the airport €55.00 – €65.00). Fitting under the seat does not matter; a bag up to 55 x 40 x 23 cm needs WIZZ Priority.",
+  "reply": "No. The free carry-on bag must be no larger than 40 x 30 x 20 cm and 10 kg, and it must fit under the seat in front of you. A 45 x 35 x 20 cm backpack is larger than that, so it would not be free, and exceeding the dimensions results in extra fees. You do not need WIZZ Priority for the free carry-on bag, since every passenger is entitled to one. Priority is only needed for the larger trolley bag allowance of 55 x 40 x 23 cm.",
+  "judge": {
+   "reason": "The reply correctly says no and gives the 40 x 30 x 20 cm free limit, but it omits the reference's key price fact that the airport cabin baggage fee is €55.00–€65.00, so it is incomplete.",
+   "correct": false,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 138,
+    "cached": 2048,
+    "out": 1710
+   }
+  },
+  "check": {
+   "reason": "The reply correctly says no, gives the 40 x 30 x 20 cm limit, says 45 x 35 x 20 cm is too big and incurs extra fees, and says WIZZ Priority is only needed for the 55 x 40 x 23 cm trolley bag. It omits the specific €55.00 – €65.00 airport cabin baggage fee, but it contradicts nothing in the reference. It does not clearly say that fitting under the seat is irrelevant for an oversized bag, but it implies this by saying the bag is not free and Priority is only for the larger allowance. Its Priority statement concerns the free carry-on bag, not this oversized one, so it is not a contradiction. The key facts are covered, though the fee amount is missing.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 3441,
+    "cached": 0,
+    "out": 256
+   }
+  },
+  "agree": false
+ },
+ {
+  "group": "gpt-prompt2-9",
+  "question": "We're travelling with a 6-month-old baby and have a stroller plus a small musical instrument. Can we bring both without an additional baggage fee?",
+  "reference": "The foldable stroller is free for the infant, but a musical instrument is special baggage for an additional fee (on board only with WIZZ Priority).",
+  "reply": "The stroller can be taken free of charge: for an infant, a foldable baby pushchair or pram may be brought on board. It can be taken up to the aircraft door or steps, then stowed in the hold and tagged at check-in, the baggage drop-off desk or the boarding gate. Electric or motorized strollers are not allowed. The musical instrument is free on board only if you have WIZZ Priority added to your booking. It must be in a case up to 80 x 40 x 23 cm and 10 kg, it takes the place of a trolley bag, and it goes in the overhead compartment. Without WIZZ Priority, special baggage is charged an additional fee, and the sources do not give that fee or the rules for carrying an instrument without Priority.",
+  "judge": {
+   "reason": "The reply says the musical instrument is 'free on board' with WIZZ Priority, but the reference states it is special baggage for an additional fee; that contradicts the key fact that the instrument is not free. It also does not clearly say the instrument incurs an additional fee even with Priority.",
+   "correct": false,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 203,
+    "cached": 1280,
+    "out": 1371
+   }
+  },
+  "check": {
+   "reason": "The stroller part matches the reference. But the reply says the instrument is \"free on board\" with WIZZ Priority, while the reference and the special baggage intro say it is special baggage for an additional fee, on board only with Priority. The excerpts never say it is free with Priority, so the reply gives the wrong answer to the fee question.",
+   "correct": false,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2256,
+    "cached": 0,
+    "out": 500
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "checked-uncollected-90-days",
+  "question": "I forgot to pick up my suitcase at the carousel last week. Is it still there?",
+  "reference": "Uncollected baggage is stored for 90 days for a storage fee; after that Wizz Air may dispose of it.",
+  "reply": "I can't check the status of your particular suitcase. The General Conditions say that if you fail to collect checked baggage, Wizz Air will store it for 90 days and charge you a storage fee. If it is not claimed within that time, it may be disposed of without liability to you. Since last week is well within 90 days, it should still be in storage, but please contact Wizz Air to confirm and to arrange collection and the storage fee.",
+  "judge": {
+   "reason": "The reply gives the key facts from the reference: 90-day storage, storage fee, and possible disposal after that. Its inference that a suitcase from last week is still within 90 days is supported by the excerpt, and it appropriately directs the customer to confirm with Wizz Air.",
+   "correct": true,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 191,
+    "cached": 512,
+    "out": 192
+   }
+  },
+  "check": {
+   "reason": "The reply gives the key facts from the reference: 90-day storage, a storage fee, and possible disposal afterward. Its inference that last week is within 90 days is consistent with the excerpt, and it hedges by advising confirmation and saying it cannot check the specific suitcase. It contradicts nothing.",
+   "correct": true,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 1043,
+    "cached": 0,
+    "out": 112
+   }
+  },
+  "agree": true
+ },
+ {
+  "group": "power-bank",
+  "question": "Can I take a power bank on the plane?",
+  "reference": "Power banks must be in cabin baggage where you can monitor them, never in checked baggage; max. 1 power bank per person, over 100 Wh is forbidden, and it may not be used during the flight.",
+  "reply": "Yes, but only in cabin baggage, never in checked baggage. Power banks must not be used during any phase of the flight and must be kept where you can continuously monitor them, on your person. Power banks over 100 Wh are forbidden. Those rated 100 to 160 Wh need Wizz Air's approval. You may carry a maximum of 1 power bank, within a limit of 20 spare batteries. A power bank cannot be charged or used to charge another device during the flight, and it cannot go in the overhead compartments; it must be placed under the seat in front or in the seat back pocket.",
+  "judge": {
+   "reason": "The reply correctly states the key rules about cabin baggage, monitoring, max 1 power bank, and no use in flight, but it also says 100-160 Wh power banks need Wizz Air approval, which contradicts the reference and the excerpt rule that power banks exceeding 100 Wh are forbidden.",
+   "correct": false,
+   "by": "deepseek-v4-pro",
+   "tokens": {
+    "in": 125,
+    "cached": 1664,
+    "out": 904
+   }
+  },
+  "check": {
+   "reason": "The reply has the main facts: cabin baggage only, monitored, max 1, no use in flight, over 100 Wh forbidden. But it then says power banks rated 100 to 160 Wh need Wizz Air's approval. That contradicts its own over-100 Wh ban and the reference. The excerpts allow the approval route only for spare batteries and devices, and say power banks over 100 Wh are forbidden.",
+   "correct": false,
+   "by": "claude-sonnet-5-5",
+   "tokens": {
+    "in": 2955,
+    "cached": 0,
+    "out": 486
+   }
+  },
+  "agree": true
+ }
+]

@@ -1,0 +1,30 @@
+{"type":"false_premise","question":"I thought every Wizz Air passenger gets a free 10kg checked bag included in the ticket. Can I just drop it off at the airport?"}
+{"type":"false_premise","question":"My small backpack can be 45 x 35 x 20 cm for free, right? I don't have to pay for priority if it fits under the seat?"}
+{"type":"false_premise","question":"I heard that Wizz Air lets you take one free duty-free shopping bag in addition to your cabin bag. Is that still true?"}
+{"type":"false_premise","question":"If I buy WIZZ Priority, I automatically get a 32kg checked bag included, don't I?"}
+{"type":"false_premise","question":"Can I split my 20kg checked baggage allowance into two suitcases without paying anything extra?"}
+{"type":"false_premise","question":"Is it true that children under 2 years old can bring an extra 10kg suitcase for free, on top of the normal baggage allowance?"}
+{"type":"edge_case","question":"My cabin bag is 41 x 31 x 21 cm, so just 1 cm over the limit in one dimension. Will they actually charge me for that?"}
+{"type":"edge_case","question":"My suitcase weighs 20.3kg but I've paid for a 20kg checked bag. Is there any small tolerance or do I need to pay extra?"}
+{"type":"edge_case","question":"We're travelling with a 6-month-old baby and have a stroller plus a small musical instrument. Can we bring both without an additional baggage fee?"}
+{"type":"edge_case","question":"I'm taking a laptop bag and a camera bag. Both fit under the seat, but together they're bigger than the free cabin allowance. Is that allowed?"}
+{"type":"edge_case","question":"I have a 32kg baggage allowance, but my suitcase is 33kg. Can I pay just for the extra kilo, or do I need to repack it?"}
+{"type":"edge_case","question":"Can I put a power bank and spare lithium batteries in my checked suitcase if I switch them off and wrap them separately?"}
+{"type":"multi_topic","question":"I'm travelling with my 2-year-old and have WIZZ Priority. Can I take a stroller, a cabin bag for myself and a separate small bag with the baby's food?"}
+{"type":"multi_topic","question":"I've booked a 20kg checked bag and WIZZ Priority. Can I check in my cabin trolley instead and take a backpack on board, or will I have to pay for changing the baggage type?"}
+{"type":"multi_topic","question":"My checked suitcase was damaged during the flight, and I also had some fragile items inside that broke. What's the process for reporting both issues and claiming compensation?"}
+{"type":"multi_topic","question":"I'm flying with a pet and a 10kg checked suitcase. Can I take the pet carrier in the cabin as well as my normal cabin bag?"}
+{"type":"multi_topic","question":"I have a folding wheelchair and a 23kg checked bag. Are there any extra fees, and can I put some of my personal belongings inside the wheelchair bag?"}
+{"type":"multi_topic","question":"If I buy an extra checked bag at the airport, can I also bring an additional cabin bag, or does that depend on whether I have Priority?"}
+{"type":"off_topic","question":"I already checked in online but my boarding pass won't download. Can I get it at the airport for free?"}
+{"type":"off_topic","question":"My Wizz Air flight was cancelled and I want a full refund. Do I need to cancel my baggage separately?"}
+{"type":"off_topic","question":"Does Ryanair have the same cabin baggage dimensions as Wizz Air? I'm flying with both airlines next week."}
+{"type":"specific_detail","question":"Can I bring a portable desktop monitor measuring 38 x 26 x 3 cm in the cabin, or is there a special rule for monitors?"}
+{"type":"specific_detail","question":"I'm travelling with a foldable baby bath. It's 55 cm long when folded. Does Wizz Air have a specific size limit for this kind of item?"}
+{"type":"specific_detail","question":"Can I pack a small sewing machine in my checked luggage, and are there any special restrictions on its foot pedal or power cable?"}
+{"type":"specific_detail","question":"I need to transport a framed wedding dress measuring 120 x 60 cm. Is there a specific procedure or maximum size for carrying it onboard?"}
+{"type":"specific_detail","question":"Can I take a disassembled fishing rod as checked baggage, and is there a specific maximum length for fishing equipment?"}
+{"type":"specific_detail","question":"My child has a balance bike with 12-inch wheels. Is there a separate baggage category or handling procedure for this type of bike?"}
+{"type":"live_or_personal","question":"I'm flying from Porto to Rome tomorrow. Does my particular flight have enough overhead locker space for a standard cabin trolley?"}
+{"type":"live_or_personal","question":"Can you check whether my booking includes a 20kg checked bag? My confirmation email is a bit confusing and I don't want to pay twice."}
+{"type":"live_or_personal","question":"I'm at Budapest airport right now. How long is the current queue at the oversized baggage drop-off counter for Wizz Air?"}

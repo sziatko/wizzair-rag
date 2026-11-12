@@ -1,0 +1,30 @@
+{"type": "false_premise", "question": "I heard every Wizz Air ticket comes with one free 10kg trolley bag for the overhead bin, where do I select that?"}
+{"type": "false_premise", "question": "Since Wizz Priority includes a free 20kg checked suitcase, do I still need to go to the bag drop desk?"}
+{"type": "false_premise", "question": "How much is the standard $15 flat fee to check a regular suitcase at the boarding gate if I forget to add it online?"}
+{"type": "false_premise", "question": "As a Wizz Discount Club member, I get one free piece of sports equipment per flight, right?"}
+{"type": "false_premise", "question": "Can I combine my 20kg and 32kg bag allowances into a single 52kg heavy trunk if I pay for both?"}
+{"type": "false_premise", "question": "Why is the app charging me for a small backpack when personal items up to 55x40x23cm are always free on Wizz?"}
+{"type": "edge_case", "question": "My hard-shell carry-on is 56cm tall with the wheels on instead of 55cm, will they actually make me pay at the gate?"}
+{"type": "edge_case", "question": "Im flying with a lap infant and bought Wizz Priority for myself—do I get an extra small bag for baby stuff on top of my two cabin bags?"}
+{"type": "edge_case", "question": "My checked bag weighs 20.4kg on my home scale, does Wizz Air round down or charge overweight fees for 400 grams?"}
+{"type": "edge_case", "question": "Can I bring my violin in the cabin as my free personal item if the case is 60cm long, or does it count as a musical instrument requiring an extra seat?"}
+{"type": "edge_case", "question": "If I buy a giant duty-free bag at the airport AND already have Wizz Priority with two bags, can I still bring the duty-free bag on board?"}
+{"type": "edge_case", "question": "I have a folding travel stroller and a baby car seat—are both free for a 3-year-old who has their own seat?"}
+{"type": "multi_topic", "question": "If I buy Wizz Go, what exact bags are included and how much extra would it cost to upgrade the checked bag from 20kg to 32kg?"}
+{"type": "multi_topic", "question": "Can I pack a lithium power bank inside my checked 20kg suitcase, and if not, does it count toward the weight limit of my cabin trolley?"}
+{"type": "multi_topic", "question": "We are traveling with a small dog in the cabin and also checking skis—how do we book both and can we still get Wizz Priority?"}
+{"type": "multi_topic", "question": "My checked suitcase arrived cracked and my laptop inside is broken—what is the deadline to report it and are electronics even covered?"}
+{"type": "multi_topic", "question": "If I add a 26kg checked bag after booking, is it cheaper via the call center or app, and can I share that weight with my partner's 10kg bag?"}
+{"type": "multi_topic", "question": "Are diabetic needles and liquid insulin allowed in my free under-seat bag without Wizz Priority, and do I need a doctor's note?"}
+{"type": "off_topic", "question": "I forgot to check in online 3 hours before my Wizz Air flight, how much is the airport check-in fee?"}
+{"type": "off_topic", "question": "Does Ryanair allow a second cabin bag if you buy priority boarding, or is it strict like Wizz?"}
+{"type": "off_topic", "question": "My Wizz flight was delayed by 4 hours yesterday, how do I claim my EU261 compensation?"}
+{"type": "specific_detail", "question": "What are the exact maximum linear dimensions allowed for a cello booked onto an extra passenger seat?"}
+{"type": "specific_detail", "question": "Can I bring a portable CPAP machine plus a spare battery in a separate medical bag without pre-approval 48 hours in advance?"}
+{"type": "specific_detail", "question": "How many liters of homemade olive oil in tin cans am I allowed to put in my checked luggage on an intra-EU Wizz flight?"}
+{"type": "specific_detail", "question": "If my checked bag is delayed on my outbound flight, what is the exact daily reimbursement limit for emergency clothes and toiletries?"}
+{"type": "specific_detail", "question": "Are smart suitcases with non-removable lithium batteries under 2.7Wh allowed in the hold on Wizz Air?"}
+{"type": "specific_detail", "question": "What is the exact minimum notice period required before departure to add a hunting rifle and ammunition to a booking?"}
+{"type": "live_or_personal", "question": "Can you check my booking reference K8L9P2 to see if I already paid for a 20kg bag on my flight to Rome?"}
+{"type": "live_or_personal", "question": "What terminal and bag drop counter number does Wizz Air use at London Luton right now?"}
+{"type": "live_or_personal", "question": "Is the overhead bin space usually full on tomorrow morning's W6 1234 flight so I know if my priority trolley will get gate-checked?"}
