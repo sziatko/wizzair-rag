@@ -195,6 +195,16 @@ uv run --env-file .env python -m wizzair_rag.rag "Can I take a 12 kg bag into th
 Downloaded Wizz Air documents are not in the repository; `download.py` fetches them. The
 fees table is rendered by JavaScript and was saved once by hand (`fees-table.txt`).
 
+Demo page (runs locally, no deploy, no extra dependencies):
+
+```bash
+uv run --env-file .env python -m wizzair_rag.demo   # then open http://127.0.0.1:8000
+```
+
+Type a question or click an example. The page shows the answer with its cited sources, the
+standard refusal when the documents say nothing, and the chunks the search found with their
+scores, so you can see what the answer was built from.
+
 Evals:
 
 ```bash

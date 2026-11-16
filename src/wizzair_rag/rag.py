@@ -184,10 +184,20 @@ def render(result: Result) -> str:
     cited = [by_id[i] for i in result.reply.citations]
     lines = [result.reply.text, "", "Sources:"]
     lines += [f"- {' > '.join(c.path)} ({c.url})" for c in cited]
-    if NOT_APPLIED_TO_CONSUMERS & set(result.reply.citations):
-        lines.append("Note: Wizz Air states it does not apply GCC clauses 17.2.2, 17.2.5 and 18.2.9 to consumers.")
-    lines.append(f"\nNot official advice. Based on Wizz Air documents saved on {cited[0].snapshot}; check wizzair.com before you travel.")
+    if note := consumer_note(result.reply.citations):
+        lines.append(note)
+    lines.append(f"\n{disclaimer(cited[0].snapshot)}")
     return "\n".join(lines)
+
+
+def consumer_note(citation_ids: list[str]) -> str | None:
+    if NOT_APPLIED_TO_CONSUMERS & set(citation_ids):
+        return "Note: Wizz Air states it does not apply GCC clauses 17.2.2, 17.2.5 and 18.2.9 to consumers."
+    return None
+
+
+def disclaimer(snapshot: str) -> str:
+    return f"Not official advice. Based on Wizz Air documents saved on {snapshot}; check wizzair.com before you travel."
 
 
 def main() -> None:
