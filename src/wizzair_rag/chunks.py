@@ -52,7 +52,7 @@ def load_chunks(snapshot: str | None = None) -> list[Chunk]:
 
 
 def load_summaries(chunks: list[Chunk]) -> list[str]:
-    """Level 2 summaries (summarize.py), in the order of `chunks`; fails if one is missing."""
+    """Level 2 summaries (written once in a chat session, decision 16), in the order of `chunks`; fails if one is missing."""
     lines = (CHUNKS_DIR / chunks[0].snapshot / "summaries.jsonl").read_text(encoding="utf-8").splitlines()
     by_id = {r["id"]: r["summary"] for r in map(json.loads, lines)}
     return [by_id[c.id] for c in chunks]

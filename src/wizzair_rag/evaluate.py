@@ -12,6 +12,8 @@ Regrade: uv run --env-file .env python -m wizzair_rag.evaluate regrade evals/res
         re-judges all saved replies in place, without asking for new answers
 Report: uv run python -m wizzair_rag.evaluate report evals/results/<file>.json
 Check:  uv run --env-file .env python -m wizzair_rag.evaluate check evals/results/<file>.json [n]
+Retrieval: uv run --env-file .env python -m wizzair_rag.evaluate retrieval
+        recall@3/5/10 and MRR for cosine, reranked and summary indexes; no answers, no judge
 
 `run` writes evals/results/<date>T<time>.json: one record per question with the retrieved
 chunks, retrieval metrics and every run's reply with its verdict. Retrieval is
@@ -420,7 +422,7 @@ def main() -> None:
     elif command == "check":
         check(Path(args[0]), int(args[1]) if len(args) > 1 else 30)
     else:
-        raise SystemExit(f"unknown command {command!r}; use run, judge, regrade, report or check")
+        raise SystemExit(f"unknown command {command!r}; use run, judge, regrade, report, check or retrieval")
 
 
 if __name__ == "__main__":

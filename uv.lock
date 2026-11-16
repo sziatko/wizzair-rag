@@ -1585,6 +1585,7 @@ dependencies = [
     { name = "anthropic" },
     { name = "numpy" },
     { name = "pdfplumber" },
+    { name = "pydantic" },
     { name = "voyageai" },
 ]
 
@@ -1593,6 +1594,7 @@ requires-dist = [
     { name = "anthropic", specifier = ">=2.8.0" },
     { name = "numpy", specifier = ">=2.5.4" },
     { name = "pdfplumber", specifier = ">=0.11.10" },
+    { name = "pydantic", specifier = ">=2" },
     { name = "voyageai", specifier = ">=0.6.0" },
 ]
 
