@@ -70,10 +70,9 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  /* max-w-page, max-w-measure, max-w-heading */
+  /* max-w-page, max-w-measure */
   --container-page: 1120px;
   --container-measure: 640px;
-  --container-heading: 800px;
 }
 
 /* The white box every panel, table and list sits in. */

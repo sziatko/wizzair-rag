@@ -8,7 +8,7 @@ export default function Questions() {
   return (
     <>
       <h1 className="text-3xl font-semibold tracking-tight">All {rows.length} questions</h1>
-      <p className="mt-2 max-w-measure text-muted">
+      <p className="mt-2 text-muted">
         Each row shows how the three answers to one question were graded. Open a question to read the answers, what the
         search found and why the judge decided as it did.
       </p>

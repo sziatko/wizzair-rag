@@ -38,7 +38,7 @@ export default async function QuestionPage({ params }: { params: Promise<{ id: s
           All questions
         </Link>
       </nav>
-      <h1 className="mt-4 max-w-heading text-3xl font-semibold tracking-tight text-balance">{q.question}</h1>
+      <h1 className="mt-4 text-3xl font-semibold tracking-tight text-pretty">{q.question}</h1>
       <ul aria-label="About this question" className="mt-4 flex flex-wrap gap-2">
         {tags.map((t) => (
           <li key={t} className="rounded-full border border-line bg-surface px-3 text-sm/6 text-muted">
