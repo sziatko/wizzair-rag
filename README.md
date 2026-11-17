@@ -9,6 +9,10 @@ The evaluation set was written before the pipeline, and the project measures the
 pipeline against it: retrieval metrics and answer accuracy on 325 questions, following
 the [Claude Cookbook RAG guide](https://platform.claude.com/cookbook/capabilities-retrieval-augmented-generation-guide).
 
+**Live demo: [wizzair-rag-three.vercel.app](https://wizzair-rag-three.vercel.app/)**, the eval
+explorer. Every question, every graded answer, what the search found and why the judge
+decided as it did. It shows saved results and calls no model.
+
 This is a personal project, not affiliated with Wizz Air. Answers are not official advice.
 
 ## What it does
