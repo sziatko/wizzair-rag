@@ -45,10 +45,10 @@ const Config = z
     check: z.object({ model: z.string(), sampled: z.number(), agreed: z.number() }).strict(),
     metrics: z
       .object({
-        retrieval: z.record(retrievalMetrics),
-        by_kind: z.record(accuracy),
-        by_source: z.record(withRecall),
-        by_source_kind: z.record(z.record(withRecall)),
+        retrieval: z.record(z.string(), retrievalMetrics),
+        by_kind: z.record(z.string(), accuracy),
+        by_source: z.record(z.string(), withRecall),
+        by_source_kind: z.record(z.string(), z.record(z.string(), withRecall)),
         calls: z.object({ calls: z.number(), seconds: z.number(), in: z.number(), cached: z.number(), out: z.number(), uncounted: z.number() }).strict(),
       })
       .strict(),
@@ -70,11 +70,12 @@ const Question = z
     group: z.string(),
     question: z.string(),
     kind: z.enum(KINDS),
-    topic: z.string().refine((t) => t in TOPIC_LABEL, (t) => ({ message: `topic ${t} has no label in lib/labels.ts` })),
+    topic: z.string().refine((t) => t in TOPIC_LABEL, { error: (iss) => `topic ${iss.input} has no label in lib/labels.ts` }),
     source: z.enum(SOURCES),
     reference: z.string(),
     expected: z.array(z.string()),
     configs: z.record(
+      z.string(),
       z
         .object({
           retrieved: z.array(z.tuple([z.string(), z.number()])),
@@ -85,7 +86,7 @@ const Question = z
   })
   .strict();
 
-const Chunk = z.object({ title: z.string(), url: z.string().url() }).strict();
+const Chunk = z.object({ title: z.string(), url: z.url() }).strict();
 
 export type Config = z.infer<typeof Config>;
 export type Run = z.infer<typeof Run>;
@@ -102,7 +103,7 @@ export const configs: Config[] = z
   .parse(read("configs"))
   .sort((a, b) => a.model.localeCompare(b.model) || retrievalRank(a) - retrievalRank(b));
 export const questions: Question[] = z.array(Question).parse(read("questions"));
-export const chunks: Record<string, Chunk> = z.record(Chunk).parse(read("chunks"));
+export const chunks: Record<string, Chunk> = z.record(z.string(), Chunk).parse(read("chunks"));
 
 // The three files point at each other by id; a dangling id would crash a page mid-build.
 const dangling = [
@@ -158,6 +159,5 @@ export const rows: QuestionRow[] = questions.map((q) => ({
 }));
 
 export const REPO_URL = z
-  .string({ required_error: "Set NEXT_PUBLIC_REPO_URL (web/.env.local locally, project settings on Vercel)" })
-  .url()
+  .url({ error: (iss) => (iss.input === undefined ? "Set NEXT_PUBLIC_REPO_URL (web/.env.local locally, project settings on Vercel)" : undefined) })
   .parse(process.env.NEXT_PUBLIC_REPO_URL);
