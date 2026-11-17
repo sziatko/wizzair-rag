@@ -12,6 +12,8 @@ from wizzair_rag.chunks import load_chunks
 chunks = load_chunks()
 chunk_ids = {c.id for c in chunks}
 groups = json.loads(Path("evals/questions.json").read_text(encoding="utf-8"))
+# Claude wrote these, except the faq groups, taken from the Wizz Air FAQ (decision 18).
+assert all((g.get("source") == "wizzair-faq") == (g["kind"] == "faq") for g in groups), "faq groups need source wizzair-faq"
 # Questions written by other model families (Gemini, GPT), labelled by a blind verifier.
 external = json.loads(Path("evals/questions-external.json").read_text(encoding="utf-8"))
 assert all(g["source"] in ("gemini", "gpt") for g in external)

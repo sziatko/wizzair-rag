@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* One source of truth for the look. Every size is a whole pixel: spacing stays Tailwind's
+   4px grid (p-4 = 16px), only the steps that differ from Tailwind's defaults are set here. */
+
+/* light-dark(light, dark) follows color-scheme: dark by default (not the system's), light
+   when the theme button stored it in <html data-theme> (see lib/theme.ts). */
+:root {
+  color-scheme: dark;
+  --paper: light-dark(#ffffff, #090a0b);
+  --surface: light-dark(#ffffff, #101214);
+  --surface-muted: light-dark(#f4f5f8, #171a1d);
+  --line: light-dark(#e8eaef, #22262b);
+  /* Control borders: 3:1 against the surface (WCAG 1.4.11). */
+  --line-strong: light-dark(#8a93a3, #646d7b);
+  --ink: light-dark(#0a0c10, #eceef0);
+  --muted: light-dark(#596070, #9aa1a9);
+  --accent: light-dark(#2b50f0, #94ee70);
+  --accent-hover: light-dark(#1b3bc8, #bdf7a6);
+  --accent-soft: light-dark(#ebf0ff, #162610);
+  /* Verdict marks: each 3:1 against the surface, and correct vs wrong about 2:1 apart in
+     lightness, so they part without hue (red-green colour blindness). Error is an outline. */
+  --correct: light-dark(#16a34a, #4ade80);
+  --correct-ink: light-dark(#15803d, #4ade80);
+  --wrong: light-dark(#b42318, #e5484d);
+  --wrong-ink: light-dark(#b42318, #ff8a84);
+  --error: #6b7280;
+  --error-ink: light-dark(#5a6371, #9aa3b2);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-correct: var(--correct);
+  --color-correct-ink: var(--correct-ink);
+  --color-wrong: var(--wrong);
+  --color-wrong-ink: var(--wrong-ink);
+  --color-error: var(--error);
+  --color-error-ink: var(--error-ink);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@theme {
+  /* Tailwind's 3xl/4xl are 30/36px; the headings use 32/40 and 48/56. */
+  --text-3xl: 32px;
+  --text-3xl--line-height: 40px;
+  --text-4xl: 48px;
+  --text-4xl--line-height: 56px;
+
+  --tracking-tight: -1px;
+  --tracking-caps: 1px;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* max-w-page, max-w-measure, max-w-heading */
+  --container-page: 1120px;
+  --container-measure: 640px;
+  --container-heading: 800px;
+}
+
+/* The white box every panel, table and list sits in. */
+@utility card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+}
+
+@layer base {
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
+  }
+
+  a {
+    color: var(--color-accent);
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

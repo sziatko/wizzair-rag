@@ -47,10 +47,15 @@ RESULTS_DIR = Path("evals/results")
 WORKERS = 8  # parallel API calls
 JUDGE_ATTEMPTS = 3  # a DeepSeek judge is asked again when its JSON misses the schema
 
-# questions.json was written by Claude; questions-external.json carries its own `source`
+# questions.json was written by Claude, except its 19 `faq` groups, taken from the Wizz Air
+# FAQ (`source: wizzair-faq`, decision 18); questions-external.json carries its own `source`
 # (Gemini, GPT) and was labelled by a blind verifier (decision 12).
 groups = [{"source": "claude"} | g for g in json.loads(Path("evals/questions.json").read_text(encoding="utf-8"))]
 groups += json.loads(Path("evals/questions-external.json").read_text(encoding="utf-8"))
+SOURCES = ["claude", "wizzair-faq", "gemini", "gpt"]  # the order of every report
+# Reports take the source from here, not from the results file: files written before
+# decision 18 label the Wizz Air FAQ questions `claude`, and those before decision 12 have no source.
+source_by_group = {g["id"]: g["source"] for g in groups}
 # Chunks the blind verifier also found the fact in (decision 4). They are not labels:
 # they only feed the secondary "hit@k any" column.
 alternatives = {
@@ -239,13 +244,87 @@ def judge_pending(path: Path) -> None:
     print(f"judged {len(pending)} replies -> {path}")
 
 
-def report(path: Path) -> str:
+KINDS = ["fact", "faq", "tricky", "no-answer"]
+
+
+def load_judged(path: Path) -> dict:
     result = json.loads(path.read_text(encoding="utf-8"))
-    records = result["questions"]
-    if any(run["verdict"] is None for r in records for run in r["runs"]):
+    if any(run["verdict"] is None for r in result["questions"] for run in r["runs"]):
         raise SystemExit(f"{path} has replies without a verdict; run `judge` on it first")
-    kinds = ["fact", "faq", "tricky", "no-answer"]
-    source = lambda r: r.get("source", "claude")  # results from before decision 12 hold only Claude's questions
+    return result
+
+
+def source_of(record: dict) -> str:
+    return source_by_group[record["group"]]
+
+
+def accuracy(rows: list[dict], runs: int) -> dict:
+    """Mean accuracy over runs with its min and max, the refusal rate and the error count."""
+    per_run = [mean(r["runs"][i]["verdict"]["correct"] for r in rows) for i in range(runs)]
+    return {
+        "questions": len(rows),
+        "accuracy": mean(per_run),
+        "min": min(per_run),
+        "max": max(per_run),
+        "refused": mean(run["reply"]["kind"] == "refusal" for r in rows for run in r["runs"]),
+        "errors": sum(run["reply"]["kind"] == "error" for r in rows for run in r["runs"]),
+    }
+
+
+def metrics(result: dict) -> dict:
+    """Every number `report` prints, as data (the eval explorer site reads it too)."""
+    records = result["questions"]
+    retrieval = {}
+    for kind in [*KINDS[:3], "all"]:
+        rows = [r for r in records if r["retrieval"] and kind in (r["kind"], "all")]
+        if not rows:
+            continue
+        m = {k: mean(r["retrieval"][k] for r in rows) for k in ("precision", "recall", "mrr", "hit_any")}
+        by_group = defaultdict(list)
+        for r in rows:
+            by_group[r["group"]].append(r["retrieval"]["recall"] == 1)
+        retrieval[kind] = m | {
+            "questions": len(rows),
+            "f1": 2 * m["precision"] * m["recall"] / (m["precision"] + m["recall"]),
+            "groups_passed": sum(all(v) for v in by_group.values()),
+            "groups": len(by_group),
+        }
+
+    by_kind = {}
+    for kind in [*KINDS, "all"]:
+        if rows := [r for r in records if kind in (r["kind"], "all")]:
+            by_kind[kind] = accuracy(rows, result["runs"])
+
+    def with_recall(rows: list[dict]) -> dict:
+        recalls = [r["retrieval"]["recall"] for r in rows if r["retrieval"]]
+        return accuracy(rows, result["runs"]) | {"recall": mean(recalls) if recalls else None}
+
+    # By kind within a source too: the sources differ in their mix of kinds (decision 18).
+    by_source, by_source_kind = {}, {}
+    for src in SOURCES:
+        if rows := [r for r in records if source_of(r) == src]:
+            by_source[src] = with_recall(rows)
+            by_source_kind[src] = {k: with_recall(kr) for k in KINDS if (kr := [r for r in rows if r["kind"] == k])}
+
+    calls = None
+    if "seconds" in records[0]["runs"][0]:  # results from before decision 12 did not record them
+        runs = [run for r in records for run in r["runs"]]
+        counted = [run["tokens"] for run in runs if run["tokens"]]
+        calls = {
+            "calls": len(runs),
+            "seconds": mean(run["seconds"] for run in runs),
+            "in": sum(t["in"] for t in counted),
+            "cached": sum(t["cached"] for t in counted),
+            "out": sum(t["out"] for t in counted),
+            "uncounted": len(runs) - len(counted),
+        }
+    return {"retrieval": retrieval, "by_kind": by_kind, "by_source": by_source, "by_source_kind": by_source_kind, "calls": calls}
+
+
+def report(path: Path) -> str:
+    result = load_judged(path)
+    m = metrics(result)
+    pct = lambda a: f"{a['accuracy']:.0%} ({a['min']:.0%}-{a['max']:.0%})"
 
     lines = [
         f"Snapshot {result['snapshot']}, {result['embed_model']} top-{result['top_k']}, "
@@ -256,19 +335,10 @@ def report(path: Path) -> str:
         f"| Kind | Questions | Precision | Recall | F1 | MRR | Groups passed | hit@{result['top_k']} any |",
         "|---|---|---|---|---|---|---|---|",
     ]
-    for kind in [*kinds[:3], "all"]:
-        rows = [r for r in records if r["retrieval"] and kind in (r["kind"], "all")]
-        if not rows:
-            continue
-        m = {k: mean(r["retrieval"][k] for r in rows) for k in ("precision", "recall", "mrr", "hit_any")}
-        f1 = 2 * m["precision"] * m["recall"] / (m["precision"] + m["recall"])
-        by_group = defaultdict(list)
-        for r in rows:
-            by_group[r["group"]].append(r["retrieval"]["recall"] == 1)
-        passed = sum(all(v) for v in by_group.values())
+    for kind, r in m["retrieval"].items():
         lines.append(
-            f"| {kind} | {len(rows)} | {m['precision']:.2f} | {m['recall']:.2f} | {f1:.2f} | {m['mrr']:.2f} "
-            f"| {passed}/{len(by_group)} ({passed / len(by_group):.0%}) | {m['hit_any']:.0%} |"
+            f"| {kind} | {r['questions']} | {r['precision']:.2f} | {r['recall']:.2f} | {r['f1']:.2f} | {r['mrr']:.2f} "
+            f"| {r['groups_passed']}/{r['groups']} ({r['groups_passed'] / r['groups']:.0%}) | {r['hit_any']:.0%} |"
         )
 
     lines += [
@@ -278,42 +348,27 @@ def report(path: Path) -> str:
         "| Kind | Questions | Accuracy | Refused | Errors |",
         "|---|---|---|---|---|",
     ]
-    for kind in [*kinds, "all"]:
-        rows = [r for r in records if kind in (r["kind"], "all")]
-        if not rows:
-            continue
-        per_run = [mean(r["runs"][i]["verdict"]["correct"] for r in rows) for i in range(result["runs"])]
-        refused = mean(run["reply"]["kind"] == "refusal" for r in rows for run in r["runs"])
-        errors = sum(run["reply"]["kind"] == "error" for r in rows for run in r["runs"])
-        lines.append(
-            f"| {kind} | {len(rows)} | {mean(per_run):.0%} ({min(per_run):.0%}-{max(per_run):.0%}) "
-            f"| {refused:.0%} | {errors} |"
-        )
+    for kind, a in m["by_kind"].items():
+        lines.append(f"| {kind} | {a['questions']} | {pct(a)} | {a['refused']:.0%} | {a['errors']} |")
 
     lines += [
         "",
-        "By who wrote the questions (accuracy as above; recall over questions whose answer is in the sources):",
+        "By where the questions come from (accuracy as above; recall over questions whose answer is in the sources):",
         "",
-        "| Source | Questions | Accuracy | Refused | Errors | Recall |",
-        "|---|---|---|---|---|---|",
+        "| Source | Kind | Questions | Accuracy | Refused | Errors | Recall |",
+        "|---|---|---|---|---|---|---|",
     ]
-    for src in sorted({source(r) for r in records}):
-        rows = [r for r in records if source(r) == src]
-        per_run = [mean(r["runs"][i]["verdict"]["correct"] for r in rows) for i in range(result["runs"])]
-        refused = mean(run["reply"]["kind"] == "refusal" for r in rows for run in r["runs"])
-        errors = sum(run["reply"]["kind"] == "error" for r in rows for run in r["runs"])
-        with_recall = [r["retrieval"]["recall"] for r in rows if r["retrieval"]]
-        recall = f"{mean(with_recall):.2f}" if with_recall else "-"
-        lines.append(f"| {src} | {len(rows)} | {mean(per_run):.0%} ({min(per_run):.0%}-{max(per_run):.0%}) | {refused:.0%} | {errors} | {recall} |")
+    for src, a in m["by_source"].items():
+        for kind, k in [("all", a), *m["by_source_kind"][src].items()]:
+            recall = "-" if k["recall"] is None else f"{k['recall']:.2f}"
+            lines.append(f"| {src} | {kind} | {k['questions']} | {pct(k)} | {k['refused']:.0%} | {k['errors']} | {recall} |")
 
-    if "seconds" in records[0]["runs"][0]:  # results from before decision 12 did not record them
-        calls = [run for r in records for run in r["runs"]]
-        counted = [run["tokens"] for run in calls if run["tokens"]]
+    if c := m["calls"]:
         lines += [
             "",
-            f"Answer calls: {len(calls)}, mean {mean(run['seconds'] for run in calls):.1f} s each; tokens in "
-            f"{sum(t['in'] for t in counted):,} (+ {sum(t['cached'] for t in counted):,} cached), out {sum(t['out'] for t in counted):,} "
-            f"({len(calls) - len(counted)} calls with an error have no count).",
+            f"Answer calls: {c['calls']}, mean {c['seconds']:.1f} s each; tokens in "
+            f"{c['in']:,} (+ {c['cached']:,} cached), out {c['out']:,} "
+            f"({c['uncounted']} calls with an error have no count).",
         ]
     return "\n".join(lines)
 
@@ -325,14 +380,14 @@ def check(path: Path, n: int) -> None:
         raise SystemExit(f"{path} was judged by {CHECK_MODEL}; a model cannot check itself")
     by_id = {g["id"]: g for g in groups}
     judged = [
-        (r, run) for r in result["questions"] for run in r["runs"] if run["verdict"]["by"] != "code"
+        (r, i, run) for r in result["questions"] for i, run in enumerate(r["runs"]) if run["verdict"]["by"] != "code"
     ]
     sample = random.Random(0).sample(judged, min(n, len(judged)))
     with ThreadPoolExecutor(WORKERS) as pool:
         second = list(pool.map(
             lambda s: llm_verdict(
-                CHECK_MODEL, s[0]["question"], by_id[s[0]["group"]]["answer"], s[1]["reply"]["text"],
-                judge_excerpts(by_id[s[0]["group"]], s[1]["reply"]),
+                CHECK_MODEL, s[0]["question"], by_id[s[0]["group"]]["answer"], s[2]["reply"]["text"],
+                judge_excerpts(by_id[s[0]["group"]], s[2]["reply"]),
             ),
             sample,
         ))
@@ -341,13 +396,14 @@ def check(path: Path, n: int) -> None:
         {
             "group": r["group"],
             "question": r["question"],
+            "run": i,  # which of the question's runs: replies can repeat word for word
             "reference": by_id[r["group"]]["answer"],
             "reply": run["reply"]["text"],
             "judge": run["verdict"],
             "check": v,
             "agree": run["verdict"]["correct"] == v["correct"],
         }
-        for (r, run), v in zip(sample, second)
+        for (r, i, run), v in zip(sample, second)
     ]
     out = path.with_name(f"{path.stem}-judge-check.json")
     out.write_text(json.dumps(rows, indent=1, ensure_ascii=False), encoding="utf-8")

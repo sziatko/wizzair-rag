@@ -355,3 +355,40 @@ this file keeps the reasoning. Newest last.
      (fees apply to each checked bag): the chunk was retrieved, but neither labelled nor cited,
      and the judge sees only those two kinds. Checked in the saved results file.
 - **Not done:** no re-grading and no change to the question file; both would cost judge runs.
+
+## 18. Reporting the retrieval result as a quality-vs-cost trade-off (2026-11-17)
+
+- **What changed in the wording:** the README, the eval explorer (`web/`) and this log now say
+  that the reranker works and is cheap but did not add enough quality on this corpus, and that
+  10 chunks buy more quality at twice the input per answer: a choice between quality (B) and
+  cost (A, C), not "the reranker does not work". The finding about other models' questions now
+  compares the same kind of question across sources instead of whole sources. The README gets
+  a "Quality vs cost" table (mean tokens per answer from the `tokens` field of the saved files).
+- **Why:**
+  1. The argument "it adds a second API call" was weak: the reranker call is small and cheap,
+     and C gives the answer model the same 3 chunks as A, so the answer costs the same. What
+     remains against it is latency, one more moving part and a gain below the bar of decision 13.
+  2. The comparison by source mixed question types: Claude's 191 questions are mostly `fact`
+     (159), Gemini's and GPT's are mostly `faq` and `tricky`. Whole-source accuracy then
+     measures the mix of kinds as much as the author.
+  3. The 19 `faq` groups of `evals/questions.json` were taken from the Wizz Air FAQ but carried
+     `source: claude`. They now carry `source: wizzair-faq`. The saved results files are not
+     changed: reports take the source from the question files by group id
+     (`evaluate.source_by_group`), so old files are counted the new way.
+- **Result, `faq` against `faq` (top 3, Haiku A / Haiku B, n = questions, 3 runs each):**
+  Wizz Air FAQ 93% / 89% (n=19, recall@3 0.94); Gemini 76% / 75% (n=21, 0.83); GPT 44% / 62%
+  (n=22, 0.86). Claude's `fact` questions: 88% / 89% (n=159; recall@3 0.99, 0.88 and 0.92 for
+  the formal, search-style and situation wordings). On Flash, `faq` from GPT: A 44%, B 59%,
+  C 52%; from Gemini: A 73%, B 87%, C 70%. Recall@3 is similar across sources, so retrieval
+  does not explain the gap. Haiku A, GPT's `faq` questions: 28 of 37 wrong replies omit a key
+  fact (keyword heuristic: the judge's reason has "omit", "miss", "incomplete" or "does not
+  mention"); the rest are "not covered" replies, a missed false premise or a refusal.
+- **Limits:** 19-22 questions per source and kind, so a few points are noise. The incompleteness
+  count is a keyword heuristic, not a reading of every reason (adding "fails to" gives 34 of 37,
+  but some of those are false "not covered" replies, not missed facts). The reference answer is
+  per group (decision 17), which penalises omitted details, so absolute numbers for
+  multi-part questions are low.
+- **Correction to decision 13:** the whole-corpus prompt measured 31.4k input tokens for Haiku,
+  not about 17k, so the estimated cost of a Haiku whole-corpus file is about $3.3, not $2.
+- **Not changed:** decisions 14 and 15 stand: the reranker stays out and `TOP_K` stays 3. No
+  new runs, no API calls; every number comes from the saved files of 2026-11-12.

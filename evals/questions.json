@@ -651,6 +651,7 @@
   {
     "id": "faq-infant-allowance",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "children",
     "chunks": ["hc-childrens-baggage#accordion-luggage-for-infant-0-2-years"],
     "answer": "Infants have no own baggage allowance: no trolley bag or checked bag can be bought in their name, but you can take one extra personal item (40 x 30 x 20 cm, 10 kg), food and a pushchair or car seat for free.",
@@ -659,6 +660,7 @@
   {
     "id": "faq-liquids",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "cabin",
     "chunks": ["hc-cabin-baggage#intro"],
     "answer": "Yes, in containers of max. 100 ml inside one transparent resealable 1-litre bag (20 x 20 cm), shown separately at security.",
@@ -667,6 +669,7 @@
   {
     "id": "faq-pet",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "special",
     "chunks": ["hc-special-baggage#accordion-animals"],
     "answer": "No. Pets are not allowed on board; only guide and assistance dogs are accepted.",
@@ -675,6 +678,7 @@
   {
     "id": "faq-damaged",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "damaged-lost",
     "chunks": ["hc-bags-reporting-procedure#accordion-damaged-baggage"],
     "answer": "Report it at the airport desk and fill in a PIR, repair the bag and keep the receipt, then submit a 'Bag damage' claim on the Wizz Air website.",
@@ -683,6 +687,7 @@
   {
     "id": "faq-lost",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "damaged-lost",
     "chunks": ["hc-bags-reporting-procedure#accordion-delayed-or-lost-baggage"],
     "answer": "Go to the Lost & Found desk at the airport and fill in a PIR (or use WorldTracer Self Service); if not found within 21 days, submit a 'Bag loss' claim.",
@@ -691,6 +696,7 @@
   {
     "id": "faq-left-on-board",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "damaged-lost",
     "chunks": ["gcc-wah-2023-03-01#17.2.9"],
     "answer": "Contact the lost and found department at the airport.",
@@ -699,6 +705,7 @@
   {
     "id": "faq-checked-included",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "checked",
     "chunks": ["hc-checked-in-baggage#intro"],
     "answer": "Not in the basic fare; WIZZ Go and WIZZ Plus bundles include checked baggage.",
@@ -707,6 +714,7 @@
   {
     "id": "faq-how-many-checked",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "checked",
     "chunks": ["hc-checked-in-baggage#intro"],
     "answer": "Up to six pieces of checked-in baggage per passenger.",
@@ -715,6 +723,7 @@
   {
     "id": "faq-ski",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "special",
     "chunks": ["hc-special-baggage#accordion-sports-equipment"],
     "answer": "Yes, as sports equipment for a fee: ski and snowboard equipment packed in a pouch, max. 149 x 119 x 171 cm and 32 kg.",
@@ -723,6 +732,7 @@
   {
     "id": "faq-drone",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "restricted",
     "chunks": ["hc-restricted-items#accordion-electronic-devices-on-board"],
     "answer": "Yes, in carry-on or checked baggage; in checked baggage it must be switched off and protected.",
@@ -731,6 +741,7 @@
   {
     "id": "faq-hoverboard",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "restricted",
     "chunks": ["hc-restricted-items#accordion-electronic-devices-on-board"],
     "answer": "No. Hoverboards and other small battery-powered vehicles are not allowed in carry-on or checked baggage.",
@@ -739,6 +750,7 @@
   {
     "id": "faq-e-cigarettes",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "restricted",
     "chunks": ["hc-restricted-items#accordion-electronic-devices-on-board"],
     "answer": "You may carry them in carry-on baggage only, but using or recharging them on board is prohibited.",
@@ -747,6 +759,7 @@
   {
     "id": "faq-motorized-suitcase",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "restricted",
     "chunks": ["hc-restricted-items#accordion-electronic-devices-on-board"],
     "answer": "No. Motorized suitcases are not allowed on board or in the hold.",
@@ -755,6 +768,7 @@
   {
     "id": "faq-coat-towel-blanket",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "cabin",
     "chunks": ["hc-cabin-baggage#intro"],
     "answer": "A coat or blanket can be taken on board free of charge; a towel is not on the list of free items.",
@@ -763,6 +777,7 @@
   {
     "id": "faq-trolley-sizer",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "cabin",
     "chunks": ["hc-cabin-baggage#accordion-trolley-bag-additional-cabin-luggage", "gcc-wah-2023-03-01#15.3.3"],
     "answer": "A trolley bag larger than 55 x 40 x 23 cm (wheels may add max. 5 cm) results in additional fees: an oversize fee is paid at the boarding gate, and Wizz Air may carry the bag as checked baggage.",
@@ -771,6 +786,7 @@
   {
     "id": "faq-infant-extra-bag",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "children",
     "chunks": ["hc-childrens-baggage#accordion-luggage-for-infant-0-2-years"],
     "answer": "Yes, one additional personal item of 40 x 30 x 20 cm and max. 10 kg for the infant, free of charge.",
@@ -779,6 +795,7 @@
   {
     "id": "faq-carry-on-placement",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "cabin",
     "chunks": ["hc-cabin-baggage#accordion-free-carry-on-bag"],
     "answer": "Under the seat in front of you.",
@@ -787,6 +804,7 @@
   {
     "id": "faq-refund-unused-bag",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "fees",
     "chunks": [],
     "answer": "Refusal: the indexed sources do not say whether unused baggage fees are refunded.",
@@ -795,6 +813,7 @@
   {
     "id": "faq-priority-sold-out",
     "kind": "faq",
+    "source": "wizzair-faq",
     "topic": "cabin",
     "chunks": [],
     "answer": "Refusal: the indexed sources do not say what happens when WIZZ Priority is sold out.",

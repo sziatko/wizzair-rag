@@ -9,8 +9,9 @@ wheels/
 # Virtual environments
 .venv
 
-# Downloaded Wizz Air documents are not ours to publish; download.py fetches them
-data/
+# Downloaded Wizz Air documents are not ours to publish; download.py fetches them.
+# Root only: web/data/ holds the site's export (titles, URLs, eval results) and is committed.
+/data/
 
 # Secrets
 .env

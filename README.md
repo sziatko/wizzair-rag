@@ -42,7 +42,7 @@ with its labelled chunk(s), a reference answer and 1–3 wordings of the questio
 | Kind | Groups | Questions | What it tests |
 |---|---|---|---|
 | fact | 53 | 159 | One fact; three wordings each (formal, search-style, a passenger's situation) |
-| faq | 19 | 19 | Questions as real passengers ask them |
+| faq | 19 | 19 | Questions as passengers ask them, taken from the Wizz Air FAQ (`source: wizzair-faq`) |
 | tricky | 19 | 21 | False premises, edge cases, two sections at once, partial answers, off-topic |
 | no-answer | 11 | 11 | Sound answerable but the sources do not answer them; a refusal is expected |
 
@@ -57,10 +57,11 @@ How the labels were made honest:
 
 A second set, `evals/questions-external.json`, has 115 questions written by Gemini and GPT
 from two fixed prompts (`evals/candidates/prompts.md`), to see whether Claude's own wording
-flatters the metrics. Three subagents with fresh context labelled them blind and a fourth tried
+flatters the metrics (compared kind for kind, question type matters more than the author; see
+"What the numbers say"). Three subagents with fresh context labelled them blind and a fourth tried
 to answer the partial ones completely (decision 12): 72 answerable, 30 partial, 12 off-topic,
-1 unanswerable. Every report splits the numbers by `source` (claude, gemini, gpt). The
-results below cover all 325 questions.
+1 unanswerable. Every report splits the numbers by `source` (claude, wizzair-faq, gemini,
+gpt) and by kind within each source. The results below cover all 325 questions.
 
 How it is scored:
 
@@ -93,12 +94,14 @@ A = top 3, B = top 10, C = top 10 reordered by a Voyage `rerank-2.5` reranker, b
 | tricky | 92 | 57% | 75% | 74% | 62% | 76% | 66% | 75% |
 | no-answer | 12 | 100% | 89% | 97% | 97% | 97% | 94% | 97% |
 | **all** | 325 | **76%** (74-78%) | **82%** (82-83%) | **82%** (81-84%) | **76%** (75-78%) | **85%** (83-86%) | **79%** (78-79%) | **86%** (84-86%) |
-| Claude's questions (210) | | 88% | 88% | 88% | 86% | 91% | 88% | 91% |
+| Claude's questions (191) | | 87% | 88% | 87% | 85% | 90% | 88% | 90% |
+| Wizz Air FAQ (19) | | 93% | 89% | 96% | 89% | 98% | 88% | 95% |
 | Gemini's questions (59) | | 68% | 81% | 69% | 67% | 81% | 68% | 74% |
 | GPT's questions (56) | | 41% | 62% | 76% | 51% | 67% | 55% | 78% |
 | pipeline errors (of 975) | | 0 | 0 | 0 | 2 | 5 | 1 | 15 |
 
-"Whole corpus" puts all 91 chunks (~16k tokens) in every prompt with no retrieval, as a
+"Whole corpus" puts all 91 chunks (about 16k tokens by a character estimate; measured prompt
+input is 31k (Haiku) and 20k (Flash)) in every prompt with no retrieval, as a
 ceiling for what retrieval could give. DeepSeek Flash is DeepSeek V4.1 Flash through
 DeepSeek's Anthropic-compatible API. C was run on Flash only; B on both models (decision 13).
 
@@ -115,6 +118,23 @@ numbers, before any answer model, are in `evaluate retrieval` (recall@3/5/10 wit
 the reranker). Precision is capped near 0.33 by design: most groups have one labelled chunk and
 A and C always return three.
 
+**Quality vs cost** (mean tokens per answer call over the 975 calls of each file, from the
+`tokens` field; cached input tokens included in the input):
+
+| Configuration | Accuracy | Input tokens per answer | Output tokens per answer | Answer cost per 1,000 answers (estimate) |
+|---|---|---|---|---|
+| Haiku, A: top 3 | 76% | 2.6k | 0.46k | ~$0.49 |
+| Haiku, B: top 10 | 82% | 5.2k | 0.52k | ~$0.78 |
+| Haiku, whole corpus | 82% | 31.4k | 0.61k | ~$3.44 |
+| Flash, A: top 3 | 76% | 1.6k (1.1k cached) | 0.36k | not recorded |
+| Flash, B: top 10 | 85% | 3.2k (1.0k cached) | 0.46k | not recorded |
+| Flash, C: top 10, reranker, top 3 | 79% | 1.7k (1.0k cached) | 0.39k | not recorded, plus one reranker call |
+| Flash, whole corpus | 86% | 20.2k (20.0k cached) | 0.45k | not recorded |
+
+Haiku's estimate uses the price recorded in decision 13 ($0.10 / $0.50 per 1M input / output
+tokens); judging is not included. Flash's output price is not recorded, so there is no
+estimate for it. Haiku and Flash count tokens differently, so compare rows within a model.
+
 **Judge check:** Sonnet agreed with the DeepSeek Pro judge on 198 of 210 sampled verdicts
 (94%): 28/30 and 29/30 on the Haiku A and whole-corpus files, 29/30 on Flash A and the whole
 corpus, 27/30 on Haiku B, 26/30 on Flash B, 30/30 on C. The 12 disagreements were reviewed
@@ -130,15 +150,27 @@ little low (about 3 points on the sample) for every answer model alike; the comp
   corpus's input tokens (Flash). The gain is
   on `faq` (+13 points) and `tricky` (+14), where A misses a labelled chunk (recall 0.71 on
   `tricky`); on `fact` the answer model is the limit, not retrieval.
-- **The reranker helps retrieval more than answers.** C raises recall at 3 from 0.86 to 0.92
-  and MRR from 0.74 to 0.84, but accuracy only from 76% to 79% (ranges 75-78% and 78-79%
-  nearly touch). B is clearly better than C on Flash (83-86% against 78-79%). By the rule of
-  decision 13 the reranker does not enter the pipeline: it is not clearly better than A and
-  B, and it adds a second API call.
-- **Gemini's and GPT's questions are harder than Claude's** for the same pipeline (A: 88%
-  against 68% and 41% for Haiku). They are less literal and retrieval finds their chunks
-  less often (recall 0.85 and 0.70 against 0.91 for Claude's), so Claude's own wording did
-  flatter the first baseline. With 10 chunks the gap narrows (Flash B: 91%, 81%, 67%; Haiku B: 88%, 81%, 62%).
+- **The reranker trades a little quality for cost; more chunks buy more quality.** Reranking
+  the top 10 and keeping 3 raises recall at 3 from 0.86 to 0.92, MRR from 0.74 to 0.84, and
+  answer accuracy from 76% to 79% (Flash; ranges 75-78% and 78-79% nearly touch). The model
+  gets the same 3 chunks as in A, so the answer costs the same; the reranker call is small
+  but adds latency and one more moving part. Ten
+  chunks without a reranker (B) score higher (85% on Flash, 82% on Haiku) but double the
+  input of every answer (about 5.2k tokens against 2.6k for Haiku). So the choice is quality
+  (B) or cost (A, C). The reranker was measured on Flash only and did not clear the bar set
+  before the run (decision 13), so it stays out on this 91-chunk corpus. On a larger corpus,
+  where the top 10 by cosine loses recall, it is the likely candidate (not measured).
+- **Question type matters more than who wrote the question.** Passenger-style answerable
+  questions, top 3, Haiku: 93% for 19 questions taken from the Wizz Air FAQ, 88% for
+  Claude's one-fact questions (159), 76% for Gemini's (21), 44% for GPT's (22). Recall at 3
+  is similar (0.83-0.94), so retrieval is not the cause. For GPT's questions, 28 of 37 wrong
+  replies omit a key fact (keyword heuristic); the rest are "not covered" replies, a missed
+  false premise or a refusal. The questions ask for several facts at once and the answer
+  misses one. Ten chunks help
+  most there (GPT 44% to 62%); the reranker, which only reorders the same 3 chunks, helps
+  less (Flash: 44% to 52%, against 59% for ten chunks). Samples are small (19-22 per
+  source). Reference answers are per group, which penalises omitted details (decision 17),
+  so absolute numbers for multi-part questions are low.
 - **DeepSeek Flash is not better than Haiku at equal context**: with top 3 both score 76%.
   Flash wins with a long context (whole corpus 86% against 82%), but its 15 pipeline errors
   there (1.5% of answers) are format failures that count as wrong: broken JSON (6), a missing
@@ -170,12 +202,15 @@ little low (about 3 points on the sample) for every answer model alike; the comp
   cost per answer tiny. The judge is DeepSeek V4 Pro and Sonnet 5.5 re-grades a sample of
   every run: judge and check come from different families, so a judge that goes easy on
   its own family shows up (decision 10).
-- **No vector database.** 91 chunks (~16k tokens) fit in a numpy matrix.
+- **Chunks vs cost.** More chunks raise answer quality and double the input; a reranker
+  keeps the input of 3 chunks but adds a call.
+- **No vector database.** 91 chunks (about 16k tokens by a character estimate; measured
+  prompt input is 31k (Haiku) and 20k (Flash)) fit in a numpy matrix.
 - **The judge sees the excerpts.** Without them it graded correct replies as wrong from
   its own idea of Wizz Air rules. With them it can accept an extra detail that is true in
   an excerpt but off the point.
-- **Synthetic questions.** Model-written wordings are cleaner than real ones; FAQ-style
-  questions are in the set to offset that.
+- **Synthetic questions.** Model-written wordings are cleaner than real ones; 19 questions
+  taken from the Wizz Air FAQ are in the set to offset that.
 
 The full reasoning is in [docs/decisions.md](docs/decisions.md).
 
@@ -204,6 +239,19 @@ uv run --env-file .env python -m wizzair_rag.demo   # then open http://127.0.0.1
 Type a question or click an example. The page shows the answer with its cited sources, the
 standard refusal when the documents say nothing, and the chunks the search found with their
 scores, so you can see what the answer was built from.
+
+Eval explorer (`web/`, a static Next.js site with the saved results; it calls no model):
+
+```bash
+uv run python -m wizzair_rag.export_site   # evals/results -> web/data/*.json (needs the local chunks)
+cd web && npm install
+echo "NEXT_PUBLIC_REPO_URL=<this repo's GitHub URL>" > .env.local
+npm run dev                                 # or `npm run build`: static files in web/out
+```
+
+It shows every question with what the search found, the three answers of each setup, the
+judge's reasons and the second judge's verdict where it re-graded one. The site gets chunk
+titles and URLs, never chunk text.
 
 Evals:
 
