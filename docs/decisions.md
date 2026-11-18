@@ -382,15 +382,24 @@ this file keeps the reasoning. Newest last.
   Wizz Air FAQ 93% / 89% (n=19, recall@3 0.94); Gemini 76% / 75% (n=21, 0.83); GPT 44% / 62%
   (n=22, 0.86). Claude's `fact` questions: 88% / 89% (n=159; recall@3 0.99, 0.88 and 0.92 for
   the formal, search-style and situation wordings). On Flash, `faq` from GPT: A 44%, B 59%,
-  C 52%; from Gemini: A 73%, B 87%, C 70%. Recall@3 is similar across sources, so retrieval
-  does not explain the gap. Haiku A, GPT's `faq` questions: 28 of 37 wrong replies omit a key
+  C 52%; from Gemini: A 73%, B 87%, C 70%. Recall@3 is similar across sources, but it
+  overstates what the model had: GPT's references need facts from chunks the labels do not
+  list. Haiku A, GPT's `faq` questions: 28 of 37 wrong replies omit a key
   fact (keyword heuristic: the judge's reason has "omit", "miss", "incomplete" or "does not
-  mention"); the rest are "not covered" replies, a missed false premise or a refusal.
+  mention"); the rest are "not covered" replies, a missed false premise or a refusal. Read one
+  by one (by a model, not yet checked by a person), 29 of the 37 lacked the judge's fact in the
+  top 3 (19 in an unlabelled chunk outside it, 7 a labelled chunk not retrieved, 3 in no chunk);
+  in 8 the fact was there and the answer left it out.
+- **Limit of the references (added 2026-11-18):** in the same reading, 7 of the 37 wrong
+  verdicts follow a reference that asks for a fact the question did not ask about (a fee, a
+  High Value Declaration, cosmetic damage), and 7 more follow a reference that draws a
+  conclusion no chunk states (6) or an inconsistent verdict (1). So the low accuracy on GPT's
+  questions partly measures the references, not only the pipeline.
 - **Limits:** 19-22 questions per source and kind, so a few points are noise. The incompleteness
-  count is a keyword heuristic, not a reading of every reason (adding "fails to" gives 34 of 37,
-  but some of those are false "not covered" replies, not missed facts). The reference answer is
-  per group (decision 17), which penalises omitted details, so absolute numbers for
-  multi-part questions are low.
+  count is a keyword heuristic (adding "fails to" gives 34 of 37, but some of those are false
+  "not covered" replies, not missed facts); the one-by-one reading above is the check on it.
+  The reference answer is per group (decision 17), which penalises omitted details, so
+  absolute numbers are low where a reference holds several facts.
 - **Correction to decision 13:** the whole-corpus prompt measured 31.4k input tokens for Haiku,
   not about 17k, so the estimated cost of a Haiku whole-corpus file is about $3.3, not $2.
 - **Not changed:** decisions 14 and 15 stand: the reranker stays out and `TOP_K` stays 3. No

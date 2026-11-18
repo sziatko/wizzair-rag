@@ -153,7 +153,8 @@ little low (about 3 points on the sample) for every answer model alike; the comp
   reaches 82% and Flash 85%, within the whole-corpus ranges, with about a sixth of the whole
   corpus's input tokens (Flash). The gain is
   on `faq` (+13 points) and `tricky` (+14), where A misses a labelled chunk (recall 0.71 on
-  `tricky`); on `fact` the answer model is the limit, not retrieval.
+  `tricky`) or a fact the reference takes from a chunk the labels do not list, which recall
+  does not count; on `fact` the answer model is the limit, not retrieval.
 - **The reranker trades a little quality for cost; more chunks buy more quality.** Reranking
   the top 10 and keeping 3 raises recall at 3 from 0.86 to 0.92, MRR from 0.74 to 0.84, and
   answer accuracy from 76% to 79% (Flash; ranges 75-78% and 78-79% nearly touch). The
@@ -168,14 +169,17 @@ little low (about 3 points on the sample) for every answer model alike; the comp
 - **Question type matters more than who wrote the question.** Passenger-style answerable
   questions, top 3, Haiku: 93% for 19 questions taken from the Wizz Air FAQ, 88% for
   Claude's one-fact questions (159), 76% for Gemini's (21), 44% for GPT's (22). Recall at 3
-  is similar (0.83-0.94), so retrieval is not the cause. For GPT's questions, 28 of 37 wrong
-  replies omit a key fact (keyword heuristic); the rest are "not covered" replies, a missed
-  false premise or a refusal. The questions ask for several facts at once and the answer
-  misses one. Ten chunks help
+  is similar (0.83-0.94; 0.86 for GPT's), but it overstates what the model had: GPT's
+  reference answers need facts from chunks the labels do not list. For GPT's questions, 28 of
+  37 wrong replies omit a key fact (keyword heuristic); the rest are "not covered" replies, a
+  missed false premise or a refusal. Read one by one (by a model, not yet checked by a
+  person), 29 of the 37 did not have the fact the judge asked for in the top 3: in 19 it is
+  in an unlabelled chunk outside the top 3, in 7 the labelled chunk was not retrieved, in 3
+  no chunk states it. In 8 the fact was in the top 3 and the answer left it out. Ten chunks help
   most there (GPT 44% to 62%); the reranker, which picks 3 of the top 10, helps
   less (Flash: 44% to 52%, against 59% for ten chunks). Samples are small (19-22 per
   source). Reference answers are per group, which penalises omitted details (decision 17),
-  so absolute numbers for multi-part questions are low.
+  so absolute numbers are low where a reference holds several facts.
 - **DeepSeek Flash is not better than Haiku at equal context**: with top 3 both score 76%.
   Flash wins with a long context (whole corpus 86% against 82%), but its 15 pipeline errors
   there (1.5% of answers) are format failures that count as wrong: broken JSON (6), a missing
@@ -190,7 +194,9 @@ little low (about 3 points on the sample) for every answer model alike; the comp
   e-cigarettes). A false premise ("my cat's carrier", "a 10 kg bag on the basic fare")
   pulls retrieval towards the premise, not the rule that corrects it.
 - **Answers that miss a second fact.** Many wrong replies are right but incomplete: they
-  give the size but not the price, or the deadline but not the liability limit.
+  give the size but not the price, or the deadline but not the liability limit. Often the
+  model never saw the missing fact: for GPT's questions the prices sit in fee-table chunks
+  that were neither labelled nor in the top 3.
 - **Cost:** the matrix, B, C and the retrieval experiment took about $8.3 of DeepSeek
   credit (answers and 6 judged files); Haiku B added about $2.2 (judging; Haiku's Anthropic
   cost was not measured).

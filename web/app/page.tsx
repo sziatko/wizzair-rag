@@ -55,7 +55,8 @@ export default function Overview() {
           With the 3 closest chunks both models get {acc("claude-haiku-5-5")} and {acc("deepseek-flash")} right. With all 91
           chunks in the prompt, {acc("claude-haiku-5-5-full")} and {acc("deepseek-flash-full")}. With 10 chunks,{" "}
           {acc(k10)} and {acc("deepseek-flash-k10")}. On tricky questions search recall is {recall("claude-haiku-5-5", "tricky")}{" "}
-          with the top 3 and {recall(k10, "tricky")} with the top 10.
+          with the top 3 and {recall(k10, "tricky")} with the top 10. Part of the gain comes from facts in chunks the labels
+          do not list, which recall does not count.
         </>
       ),
     },
@@ -82,8 +83,9 @@ export default function Overview() {
         <>
           Answerable passenger-style questions with the shipped setup:{" "}
           {BY_TYPE.map(([s, k, who]) => `${pct(slice(shipped.id, s, k).accuracy)} for ${who} (${slice(shipped.id, s, k).questions})`).join(", ")}.
-          Search recall is similar ({recallRange(shipped.id)}), so search is not the cause: GPT&apos;s questions ask for several
-          facts at once and the answer misses one. Ten chunks help most there ({pct(slice(shipped.id, "gpt", "faq").accuracy)}{" "}
+          Search recall is similar ({recallRange(shipped.id)}), but it overstates what the model had: GPT&apos;s reference
+          answers need facts from chunks the labels do not list. In 29 of 37 wrong answers to GPT&apos;s questions the fact
+          the judge asked for was not in the top 3 (read by a model, not yet checked by a person). Ten chunks help most there ({pct(slice(shipped.id, "gpt", "faq").accuracy)}{" "}
           → {pct(slice(k10, "gpt", "faq").accuracy)}). Samples are small, and the reference answer is per group, which
           penalises omitted details.
         </>
