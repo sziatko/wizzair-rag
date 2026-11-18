@@ -66,8 +66,9 @@ export default function Overview() {
         <>
           Reordering the top 10 and keeping 3 raises search recall from {recall("deepseek-flash", "all")} to{" "}
           {recall("deepseek-flash-rerank", "all")} and correct answers from {acc("deepseek-flash")} to{" "}
-          {acc("deepseek-flash-rerank")} (Flash). The model reads the same 3 chunks, so an answer costs the same; the reranker
-          adds latency and one more moving part. Ten chunks without a reranker score higher ({acc("deepseek-flash-k10")} on
+          {acc("deepseek-flash-rerank")} (Flash). The reranker picks 3 of the top 10, so it can lift a chunk from positions
+          4-10: the model reads as much context as with the top 3, so an answer costs the same, but not always the same
+          chunks. The reranker adds latency and one more moving part. Ten chunks without a reranker score higher ({acc("deepseek-flash-k10")} on
           Flash, {acc(k10)} on Haiku) but double the input of every answer ({tokensIn(k10)} tokens against{" "}
           {tokensIn(shipped.id)} for Haiku). The reranker did not clear the bar set before the run, so it stays out on this
           91-chunk corpus; on a larger one it is the likely candidate (not measured).

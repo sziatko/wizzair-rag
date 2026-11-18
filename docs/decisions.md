@@ -85,7 +85,7 @@ this file keeps the reasoning. Newest last.
 - **Choice:** Voyage AI embeddings (`voyage-4-large`) of headings + chunk text; an
   in-memory numpy matrix; top-3 chunks by cosine similarity; answers by Claude Haiku 5.5.
 - **Why:** follows the Cookbook so later levels compare against a known baseline. The
-  corpus is small (91 chunks, ~16k tokens), so a vector database would add nothing.
+  corpus is small (91 chunks, ~16k tokens by a character estimate), so a vector database would add nothing.
   A cheap answer model under a stronger judge shows how far a low-cost setup gets.
 - **Answer format:** structured output, either `{kind: "answer", text, citations}` or
   `{kind: "refusal"}`. Evals count refusals from the field, not from the text. The
@@ -146,7 +146,7 @@ this file keeps the reasoning. Newest last.
 
 ## 9. A whole-corpus mode: every chunk in the prompt, no retrieval (2026-11-11)
 
-- **Choice:** `evaluate run <runs> full` sends all 91 chunks (~16k tokens) to the same
+- **Choice:** `evaluate run <runs> full` sends all 91 chunks (~16k tokens by a character estimate; measured 31.4k for Haiku, decision 18) to the same
   answer prompt instead of the top 3. It answers one question: how much do the answers
   lose to retrieval? Retrieval metrics are not computed in this mode.
 - **Why:** the corpus fits in a prompt, so the mode is a cheap ceiling for any retrieval
@@ -366,13 +366,16 @@ this file keeps the reasoning. Newest last.
   a "Quality vs cost" table (mean tokens per answer from the `tokens` field of the saved files).
 - **Why:**
   1. The argument "it adds a second API call" was weak: the reranker call is small and cheap,
-     and C gives the answer model the same 3 chunks as A, so the answer costs the same. What
+     and C gives the answer model as much context as A (3 chunks, so the answer costs the same).
+     They are not always the same 3: the reranker picks them from the top 10 and can lift a
+     chunk from positions 4-10 (recall@3 0.86 -> 0.92). What
      remains against it is latency, one more moving part and a gain below the bar of decision 13.
   2. The comparison by source mixed question types: Claude's 191 questions are mostly `fact`
      (159), Gemini's and GPT's are mostly `faq` and `tricky`. Whole-source accuracy then
      measures the mix of kinds as much as the author.
   3. The 19 `faq` groups of `evals/questions.json` were taken from the Wizz Air FAQ but carried
-     `source: claude`. They now carry `source: wizzair-faq`. The saved results files are not
+     `source: claude`. They now carry `source: wizzair-faq`, so the sources are Claude 191,
+     Gemini 59, GPT 56 and the Wizz Air FAQ 19 (325 questions). The saved results files are not
      changed: reports take the source from the question files by group id
      (`evaluate.source_by_group`), so old files are counted the new way.
 - **Result, `faq` against `faq` (top 3, Haiku A / Haiku B, n = questions, 3 runs each):**

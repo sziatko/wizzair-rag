@@ -105,7 +105,7 @@ A = top 3, B = top 10, C = top 10 reordered by a Voyage `rerank-2.5` reranker, b
 | pipeline errors (of 975) | | 0 | 0 | 0 | 2 | 5 | 1 | 15 |
 
 "Whole corpus" puts all 91 chunks (about 16k tokens by a character estimate; measured prompt
-input is 31k (Haiku) and 20k (Flash)) in every prompt with no retrieval, as a
+input is 31.4k (Haiku) and 20.2k (Flash)) in every prompt with no retrieval, as a
 ceiling for what retrieval could give. DeepSeek Flash is DeepSeek V4.1 Flash through
 DeepSeek's Anthropic-compatible API. C was run on Flash only; B on both models (decision 13).
 
@@ -156,9 +156,10 @@ little low (about 3 points on the sample) for every answer model alike; the comp
   `tricky`); on `fact` the answer model is the limit, not retrieval.
 - **The reranker trades a little quality for cost; more chunks buy more quality.** Reranking
   the top 10 and keeping 3 raises recall at 3 from 0.86 to 0.92, MRR from 0.74 to 0.84, and
-  answer accuracy from 76% to 79% (Flash; ranges 75-78% and 78-79% nearly touch). The model
-  gets the same 3 chunks as in A, so the answer costs the same; the reranker call is small
-  but adds latency and one more moving part. Ten
+  answer accuracy from 76% to 79% (Flash; ranges 75-78% and 78-79% nearly touch). The
+  reranker picks 3 of the top 10, so it can lift a chunk from positions 4-10: the model gets
+  as much context as in A (3 chunks, so the answer costs the same), but not always the same
+  chunks. The reranker call is small but adds latency and one more moving part. Ten
   chunks without a reranker (B) score higher (85% on Flash, 82% on Haiku) but double the
   input of every answer (about 5.2k tokens against 2.6k for Haiku). So the choice is quality
   (B) or cost (A, C). The reranker was measured on Flash only and did not clear the bar set
@@ -171,7 +172,7 @@ little low (about 3 points on the sample) for every answer model alike; the comp
   replies omit a key fact (keyword heuristic); the rest are "not covered" replies, a missed
   false premise or a refusal. The questions ask for several facts at once and the answer
   misses one. Ten chunks help
-  most there (GPT 44% to 62%); the reranker, which only reorders the same 3 chunks, helps
+  most there (GPT 44% to 62%); the reranker, which picks 3 of the top 10, helps
   less (Flash: 44% to 52%, against 59% for ten chunks). Samples are small (19-22 per
   source). Reference answers are per group, which penalises omitted details (decision 17),
   so absolute numbers for multi-part questions are low.
@@ -209,7 +210,7 @@ little low (about 3 points on the sample) for every answer model alike; the comp
 - **Chunks vs cost.** More chunks raise answer quality and double the input; a reranker
   keeps the input of 3 chunks but adds a call.
 - **No vector database.** 91 chunks (about 16k tokens by a character estimate; measured
-  prompt input is 31k (Haiku) and 20k (Flash)) fit in a numpy matrix.
+  prompt input is 31.4k (Haiku) and 20.2k (Flash)) fit in a numpy matrix.
 - **The judge sees the excerpts.** Without them it graded correct replies as wrong from
   its own idea of Wizz Air rules. With them it can accept an extra detail that is true in
   an excerpt but off the point.
